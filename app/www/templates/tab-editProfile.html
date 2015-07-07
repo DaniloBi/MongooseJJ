@@ -1,0 +1,42 @@
+<ion-view view-title="Modifica Profilo">
+    <ion-content padding="true">
+        <form ng-submit="editProfile()">
+            <div class="list list-inset">
+                <label class="item item-input">
+                    <input type="text" placeholder="Email" ng-model="userTemp.email" disabled>
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Nome" ng-model="userTemp.name" required>
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Cognome" ng-model="userTemp.surname" required>
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Numero di telefono" ng-model="userTemp.telephone" required>
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Vecchia Password" ng-model="userTemp.old_password" required>
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Nuova Password" ng-model="userTemp.password" required>
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Indirizzo" ng-model="userTemp.address" required>
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Civico" ng-model=userTemp.streetNumber required>
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Citta" ng-model="userTemp.city" required>
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Regione" ng-model="userTemp.state" required>
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Stato" ng-model="userTemp.country" required>
+                </label>
+            </div>
+            <button type="submit" id="submit" class="button button-block button-dark">Invio</button>
+        </form>
+      </ion-content>
+</ion-view>

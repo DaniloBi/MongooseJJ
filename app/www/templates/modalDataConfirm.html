@@ -1,0 +1,41 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-dark">
+        <h1 class="title">Conferma informazioni</h1>
+        <button class="button button-icon button-clear ion-close-round" menu-toggle="right" ng-click="closeModal(2)">
+        </button>
+    </ion-header-bar>
+
+    <ion-content class="padding">
+        <form ng-submit="">
+            <div class="list list-inset">
+
+                <label class="item item-input">
+                    <input type="text" placeholder="Nome" ng-model="user.name">
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Cognome" ng-model="user.surname">
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Indirizzo" ng-model="user.address">
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Citta" ng-model="user.city">
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Provincia" ng-model="user.region">
+                </label>
+                <label class="item item-input">
+                    <input type="text" placeholder="Stato" ng-model="user.country">
+                </label>
+                <label class="item item-input">
+                    <select>
+                        <option>Sesso</option>
+                        <option value="1">M</option>
+                        <option value="2">F</option>
+                    </select>
+                </label>
+
+            </div>
+        </form>
+    </ion-content>
+</ion-modal-view>

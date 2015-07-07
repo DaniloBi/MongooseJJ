@@ -1,0 +1,598 @@
+[
+  {
+    "description": "Categoria Sport",
+    "name": "Sport",
+    "homepage": true,
+    "order": 2,
+    "image": "ent6x/1/modello (1).jpg",
+    "useImage": true,
+    "blockHTML": "",
+    "code": 0,
+    "Products": []
+  },
+  {
+    "description": "",
+    "name": "Uomo",
+    "homepage": true,
+    "order": 1,
+    "image": "ent6x/1/Foto modello .jpg",
+    "useImage": true,
+    "blockHTML": "",
+    "code": 1,
+    "Products": [
+      {
+        "oid": 2049,
+        "descriptionLong": "Camicia-C2015S01",
+        "descriptionShort": "Camicia-C2015S01",
+        "name": "Camicia-C2015S01",
+        "price": "49.9",
+        "pictureDefault": "ent1/2/Camicia 2.jpg",
+        "originalOid": 99,
+        "Pictures": [
+          {
+            "oid": 2017,
+            "picture": "ent1/2/Camicia 2.jpg"
+          }
+        ],
+        "Taglia": [
+          {
+            "name": "XXL"
+          },
+          {
+            "name": "XL"
+          },
+          {
+            "name": "L"
+          },
+          {
+            "name": "M"
+          }
+        ],
+        "Colore": []
+      },
+      {
+        "oid": 2050,
+        "descriptionLong": "Camicia-C2015S02",
+        "descriptionShort": "Camicia-C2015S02",
+        "name": "Camicia-C2015S02",
+        "price": "49.9",
+        "pictureDefault": "ent1/1/Camicia 1.jpg",
+        "originalOid": 100,
+        "Pictures": [
+          {
+            "oid": 2018,
+            "picture": "ent1/1/Camicia 1.jpg"
+          }
+        ],
+        "Taglia": [
+          {
+            "name": "XXL"
+          },
+          {
+            "name": "XL"
+          },
+          {
+            "name": "L"
+          },
+          {
+            "name": "M"
+          }
+        ],
+        "Colore": []
+      },
+      {
+        "oid": 2051,
+        "descriptionLong": "Camicia-C2015S03",
+        "descriptionShort": "Camicia-C2015S03",
+        "name": "Camicia-C2015S03",
+        "price": "49.9",
+        "pictureDefault": "ent1/1/Camicia 4.jpg",
+        "originalOid": 101,
+        "Pictures": [
+          {
+            "oid": 2019,
+            "picture": "ent1/1/Camicia 4.jpg"
+          }
+        ],
+        "Taglia": [
+          {
+            "name": "XXL"
+          },
+          {
+            "name": "XL"
+          },
+          {
+            "name": "L"
+          },
+          {
+            "name": "M"
+          }
+        ],
+        "Colore": []
+      },
+      {
+        "oid": 2052,
+        "descriptionLong": "JJ CAM. DATTERO 2724/2247",
+        "descriptionShort": "JJ CAM. DATTERO 2724/2247",
+        "name": "Camicia-Bluette",
+        "price": "49.9",
+        "pictureDefault": "ent1/1/Camicia 15.jpg",
+        "originalOid": 102,
+        "Pictures": [
+          {
+            "oid": 2020,
+            "picture": "ent1/1/Camicia 15.jpg"
+          }
+        ],
+        "Taglia": [
+          {
+            "name": "XXL"
+          },
+          {
+            "name": "XL"
+          },
+          {
+            "name": "L"
+          },
+          {
+            "name": "M"
+          }
+        ],
+        "Colore": [
+          {
+            "name": "Bluette"
+          }
+        ]
+      },
+      {
+        "oid": 2053,
+        "descriptionLong": "Camicia-C2015S04",
+        "descriptionShort": "Camicia-C2015S04",
+        "name": "Camicia-C2015S04",
+        "price": "49.9",
+        "pictureDefault": "ent1/2/Camicia 5.jpg",
+        "originalOid": 103,
+        "Pictures": [
+          {
+            "oid": 2021,
+            "picture": "ent1/2/Camicia 5.jpg"
+          }
+        ],
+        "Taglia": [],
+        "Colore": []
+      },
+      {
+        "oid": 2054,
+        "descriptionLong": "CAM. CORTINA 27232273",
+        "descriptionShort": "CAM. CORTINA 27232273",
+        "name": "CAM. CORTINA 27232273",
+        "price": "49.9",
+        "pictureDefault": "ent1/1/CAM. CORTINA 27232273.jpg",
+        "originalOid": 106,
+        "Pictures": [
+          {
+            "oid": 2022,
+            "picture": "ent1/1/CAM. CORTINA 27232273.jpg"
+          }
+        ],
+        "Taglia": [
+          {
+            "name": "XXL"
+          },
+          {
+            "name": "XL"
+          },
+          {
+            "name": "L"
+          },
+          {
+            "name": "M"
+          },
+          {
+            "name": "S"
+          },
+          {
+            "name": "XS"
+          }
+        ],
+        "Colore": [
+          {
+            "name": "Bianco"
+          }
+        ]
+      },
+      {
+        "oid": 2055,
+        "descriptionLong": "Camicia Bianca",
+        "descriptionShort": "Camicia Bianca",
+        "name": "Camicia Bianca",
+        "price": "49.9",
+        "pictureDefault": "ent1/2/Camicia 3.jpg",
+        "originalOid": 107,
+        "Pictures": [
+          {
+            "oid": 2023,
+            "picture": "ent1/2/Camicia 3.jpg"
+          }
+        ],
+        "Taglia": [
+          {
+            "name": "XL"
+          },
+          {
+            "name": "L"
+          },
+          {
+            "name": "M"
+          },
+          {
+            "name": "S"
+          }
+        ],
+        "Colore": [
+          {
+            "name": "Bianco"
+          }
+        ]
+      },
+      {
+        "oid": 2056,
+        "descriptionLong": "Camicia Blue",
+        "descriptionShort": "Camicia Blue",
+        "name": "Camicia Blue",
+        "price": "49.9",
+        "pictureDefault": "ent1/2/Camicia 6.jpg",
+        "originalOid": 110,
+        "Pictures": [
+          {
+            "oid": 2024,
+            "picture": "ent1/2/Camicia 6.jpg"
+          }
+        ],
+        "Taglia": [
+          {
+            "name": "XL"
+          },
+          {
+            "name": "L"
+          },
+          {
+            "name": "M"
+          },
+          {
+            "name": "S"
+          }
+        ],
+        "Colore": [
+          {
+            "name": "Bluette"
+          }
+        ]
+      },
+      {
+        "oid": 2057,
+        "descriptionLong": "Camicia Bluette",
+        "descriptionShort": "Camicia Bluette",
+        "name": "Camicia Bluette",
+        "price": "49.9",
+        "pictureDefault": "ent1/3/Camicia.jpg",
+        "originalOid": 111,
+        "Pictures": [
+          {
+            "oid": 2025,
+            "picture": "ent1/3/Camicia.jpg"
+          }
+        ],
+        "Taglia": [
+          {
+            "name": "XL"
+          },
+          {
+            "name": "L"
+          },
+          {
+            "name": "M"
+          },
+          {
+            "name": "S"
+          }
+        ],
+        "Colore": [
+          {
+            "name": "Bluette"
+          }
+        ]
+      },
+      {
+        "oid": 2058,
+        "descriptionLong": "Camicia Bianca",
+        "descriptionShort": "Camicia Bianca",
+        "name": "Camicia Bianca",
+        "price": "49.9",
+        "pictureDefault": "ent1/1/Camicia 7.jpg",
+        "originalOid": 112,
+        "Pictures": [
+          {
+            "oid": 2026,
+            "picture": "ent1/1/Camicia 7.jpg"
+          }
+        ],
+        "Taglia": [],
+        "Colore": [
+          {
+            "name": "Bianco"
+          }
+        ]
+      },
+      {
+        "oid": 2059,
+        "descriptionLong": "Camicia Bianca",
+        "descriptionShort": "Camicia Bianca",
+        "name": "Camicia Bianca",
+        "price": "49.9",
+        "pictureDefault": "ent1/1/Camicia 9.jpg",
+        "originalOid": 113,
+        "Pictures": [
+          {
+            "oid": 2027,
+            "picture": "ent1/1/Camicia 9.jpg"
+          }
+        ],
+        "Taglia": [],
+        "Colore": []
+      }
+    ]
+  },
+  {
+    "description": "News",
+    "name": "News",
+    "homepage": true,
+    "order": 9,
+    "image": "ent6x/1/news.png",
+    "useImage": false,
+    "blockHTML": "<p>NEWS</p>\\\r\\\n",
+    "code": 2,
+    "Products": []
+  },
+  {
+    "description": "Tshirts",
+    "name": "Tshirts",
+    "homepage": true,
+    "order": 7,
+    "image": "ent6x/1/tshirt.png",
+    "useImage": false,
+    "blockHTML": "<p style=\"text-align: center; color:#fff; font-size:125px\">T-Shirts</p>\\\r\\\n<p style=\"text-align: center; color:#000; font-size:54px; font-family: 'novecento_wide-light';\">Men Style</p>",
+    "code": 3,
+    "Products": [
+      {
+        "oid": 2060,
+        "descriptionLong": "T-SHIRT TASCHINO M/M 504",
+        "descriptionShort": "T-SHIRT TASCHINO M/M 504",
+        "name": "T-SHIRT TASCHINO M/M 504",
+        "price": "38.5",
+        "pictureDefault": "ent1/1/T-SHIRT TASCHINO MM 504.jpg",
+        "originalOid": 104,
+        "Pictures": [
+          {
+            "oid": 2028,
+            "picture": "ent1/1/T-SHIRT TASCHINO MM 504.jpg"
+          }
+        ],
+        "Taglia": [
+          {
+            "name": "XXL"
+          },
+          {
+            "name": "XL"
+          },
+          {
+            "name": "L"
+          },
+          {
+            "name": "M"
+          },
+          {
+            "name": "S"
+          }
+        ],
+        "Colore": [
+          {
+            "name": "Nero"
+          }
+        ]
+      },
+      {
+        "oid": 2061,
+        "descriptionLong": "T-SHIRT TRECOLOR M/M 507",
+        "descriptionShort": "T-SHIRT TRECOLOR M/M 507",
+        "name": "T-SHIRT TRECOLOR M/M 507",
+        "price": "38.5",
+        "pictureDefault": "ent1/1/T SHIRT TRECOLOR MM 507.jpg",
+        "originalOid": 105,
+        "Pictures": [
+          {
+            "oid": 2029,
+            "picture": "ent1/1/T SHIRT TRECOLOR MM 507.jpg"
+          }
+        ],
+        "Taglia": [
+          {
+            "name": "XL"
+          },
+          {
+            "name": "L"
+          },
+          {
+            "name": "M"
+          },
+          {
+            "name": "S"
+          }
+        ],
+        "Colore": [
+          {
+            "name": "Bianco"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "description": "Intimo",
+    "name": "Intimo",
+    "homepage": true,
+    "order": 6,
+    "image": "ent6x/1/intimo.png",
+    "useImage": false,
+    "blockHTML": "<p class=\"up\">Intimo</p>\\\r\\\n\\\r\\\n<p class=\"down\">Underwear</p>\\\r\\\n",
+    "code": 4,
+    "Products": []
+  },
+  {
+    "description": "",
+    "name": "LookBook",
+    "homepage": true,
+    "order": 4,
+    "image": "",
+    "useImage": false,
+    "blockHTML": "<p style=\"text-align: center;\"><span style=\"font-size:175px;font-family: '5am_gender-normal';\">LOOKBOOK</span></p>\\\r\\\n\\\r\\\n<div style=\"font-family: 'novecento_wide-light'; color:#fff; text-align:center; font-size:39px; line-height: 39px;\">\\\r\\\n<p>Collezione</p>\\\r\\\n\\\r\\\n<p>primavera - estate</p>\\\r\\\n\\\r\\\n<p>2015</p>\\\r\\\n</div>",
+    "code": 5,
+    "Products": []
+  },
+  {
+    "description": "Streets",
+    "name": "Streets",
+    "homepage": true,
+    "order": 5,
+    "image": "ent6x/1/street.png",
+    "useImage": false,
+    "blockHTML": "<p>Street</p>\\\r\\\n",
+    "code": 6,
+    "Products": [
+      {
+        "oid": 2062,
+        "descriptionLong": "Pantalone Estate 2015",
+        "descriptionShort": "Pantalone Estate 2015",
+        "name": "Pantalone",
+        "price": "49.9",
+        "pictureDefault": "ent1/1/Pantalone nero a puntini.jpg",
+        "originalOid": 98,
+        "Pictures": [
+          {
+            "oid": 2030,
+            "picture": "ent1/1/Pantalone nero a puntini.jpg"
+          }
+        ],
+        "Taglia": [
+          {
+            "name": "XXL"
+          },
+          {
+            "name": "XL"
+          },
+          {
+            "name": "L"
+          },
+          {
+            "name": "M"
+          }
+        ],
+        "Colore": [
+          {
+            "name": "Nero"
+          }
+        ]
+      },
+      {
+        "oid": 2063,
+        "descriptionLong": "Pantalone con Bretella",
+        "descriptionShort": "Pantalone con Bretella",
+        "name": "Pantalone con Bretella",
+        "price": "49.9",
+        "pictureDefault": "ent1/1/1 Pantalone nero con bretelle.jpg",
+        "originalOid": 108,
+        "Pictures": [
+          {
+            "oid": 2031,
+            "picture": "ent1/1/1 Pantalone nero con bretelle.jpg"
+          }
+        ],
+        "Taglia": [
+          {
+            "name": "XL"
+          },
+          {
+            "name": "L"
+          },
+          {
+            "name": "M"
+          },
+          {
+            "name": "S"
+          }
+        ],
+        "Colore": [
+          {
+            "name": "Nero"
+          }
+        ]
+      },
+      {
+        "oid": 2064,
+        "descriptionLong": "Pantalone ",
+        "descriptionShort": "Pantalone ",
+        "name": "Pantalone ",
+        "price": "60.0",
+        "pictureDefault": "ent1/1/Pantalone nero.jpg",
+        "originalOid": 109,
+        "Pictures": [
+          {
+            "oid": 2032,
+            "picture": "ent1/1/Pantalone nero.jpg"
+          }
+        ],
+        "Taglia": [
+          {
+            "name": "XL"
+          },
+          {
+            "name": "L"
+          },
+          {
+            "name": "M"
+          },
+          {
+            "name": "S"
+          }
+        ],
+        "Colore": [
+          {
+            "name": "Nero"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "description": "Offerte speciali",
+    "name": "Offerte speciali",
+    "homepage": true,
+    "order": 8,
+    "image": "ent6x/3/offspeciali.png",
+    "useImage": false,
+    "blockHTML": "<p class=\"up\">Offerte</p>\\\r\\\n\\\r\\\n<p class=\"down\">Speciali</p>\\\r\\\n",
+    "code": 7,
+    "Products": []
+  },
+  {
+    "description": "Accessori",
+    "name": "Accessori",
+    "homepage": true,
+    "order": 3,
+    "image": "ent6x/1/accessori.png",
+    "useImage": true,
+    "blockHTML": "",
+    "code": 8,
+    "Products": []
+  }
+]

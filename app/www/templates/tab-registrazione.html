@@ -1,0 +1,19 @@
+<ion-view view-title="Crea account">
+    <ion-content class="padding">
+        <form name="registrationForm" ng-submit="registrationForm.$valid && doRegistration()" novalidate>
+            {{registrationForm.$valid}}
+            <div class="list list-inset">
+                <label class="item item-input">
+                    <input type="email" placeholder="Email" ng-model="user.email"  required>
+                </label>
+                <label class="item item-input">
+                    <input type="password" placeholder="Password" ng-model="user.password" required>
+                </label>
+
+            </div>
+            <button class="button button-block button-dark" type="submit">Invio</button>
+        </form>
+
+    </ion-content>
+
+</ion-view>

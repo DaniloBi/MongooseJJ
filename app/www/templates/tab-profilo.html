@@ -1,0 +1,36 @@
+<ion-view view-title="Profilo">
+    <ion-content padding="true">
+        <div class="list list-inset">
+            <label class="item item-input">
+                <input type="text" placeholder="Nome" ng-model="user.name" disabled>
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Cognome" ng-model="user.surname" disabled>
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Numero di telefono" ng-model="user.telephone" disabled>
+            </label>
+            <label class="item item-input">
+                <input type="password" placeholder="Password (non visibile)" ng-model="user.password" disabled>
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Indirizzo" ng-model="user.address" disabled>
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Civico" ng-model=user.streetNumber disabled>
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Citta" ng-model="user.city" disabled>
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Regione" ng-model="user.state" disabled>
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Stato" ng-model="user.country" disabled>
+            </label>
+        </div>
+
+        <a class="button button-dark" role="button" href="#/tab/editProfile">Modifica/aggiungi informazioni</a>
+
+    </ion-content>
+</ion-view>

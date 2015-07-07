@@ -1,0 +1,64 @@
+<ion-view view-title="Prodotto">
+    <ion-content>
+
+        <div >
+            <div >
+                <h1> {{element.name}} </h1>
+            </div>
+            <div >
+                <img ng-src={{connection.url}}/wr-resource/{{element.pictureDefault}} style="width:60%">
+
+                <div style="padding-top: 7%">
+                    <h1>{{element.price | currency:"€"}}</h1>
+                </div>
+            </div>
+            <div class="row" style="padding-top: 30px">
+                <div class="col" ng-repeat="img in element.Pictures">
+                    <div class=" list card">
+                        <div class="item item-body">
+                            <img ng-src={{connection.url}}/wr-resource/{{img.picture}} style="width:15%">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form name="redirectForm"  ng-submit="redirectForm.$valid && redirect()" novalidate>
+                {{redirectForm.$valid}}
+                <div class="item ">
+                    <button class="button button-block button-dark item-icon-right" type="submit">
+                        Acquista<i class="icon fa fa-shopping-cart"></i>
+                    </button>
+                </div>
+                <div class="list">
+
+                    <label class="item item-input item-select">
+
+                        <div class="input-label">
+                            Colore
+                        </div>
+
+                        <select ng-model="user.colore" ng-options="colore.name as colore.name for colore in mapColore"
+                                required></select>
+
+                    </label>
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            Taglia
+                        </div>
+                        <select ng-model="user.taglia" ng-options="taglia.name as taglia.name for taglia in mapTaglia"
+                                required></select>
+
+                    </label>
+
+                    </select>
+                </div>
+            </form>
+
+            <h4>Descrizione:</h4>
+
+            {{element.descriptionLong}}
+
+
+        </div>
+    </ion-content>
+</ion-view>

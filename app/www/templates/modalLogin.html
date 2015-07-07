@@ -1,0 +1,47 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-dark">
+        <h1 class="title">Login</h1>
+        <button class="button button-icon button-clear ion-close-round" menu-toggle="right" ng-click="closeModal(1)">
+        </button>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <form ng-submit="doLogin()">
+            <div class="list list-inset">
+                <label class="item item-input">
+                    <input type="email" placeholder="Email" ng-model="user.email">
+                </label>
+                <label class="item item-input">
+                    <input type="password" placeholder="Password" ng-model="user.password">
+                </label>
+                <label class="item">
+                    <button class="button button-block button-positive" type="submit">Log in</button>
+                </label>
+            </div>
+        </form>
+
+        <div class="row">
+            <div class="col">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="list">
+                    <button class="item btn btn-block btn-lg btn-social btn-facebook" ng-click="facebook()">
+                        <i class="fa fa-facebook"></i>
+                        Login with Facebook
+                    </button>
+                    <button class="item btn btn-block btn-lg btn-social btn-google-plus" ng-click="google()">
+                        <i class="fa fa-google-plus"></i>
+                        Login with Google
+                    </button>
+                </div>
+            </div>
+        </div>
+        <h3>Non hai un account?</h3>
+        <form>
+            <label class="item">
+                <button class="button button-block button-dark" ng-click="openRegistrazione(1)">Crea Account</button>
+            </label>
+        </form>
+    </ion-content>
+</ion-modal-view>

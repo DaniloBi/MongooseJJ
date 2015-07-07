@@ -1,0 +1,21 @@
+<ion-view view-title="{{categoria.name}}">
+    <ion-content>
+
+        <div class="row " style="flex-wrap:wrap">
+                <div class="col col-50 " ng-repeat="item in categoria.Products" >
+                    <div class=" list">
+                    <div class="text-center item item-body" >
+
+                        {{item.name}}
+                        <a href="#/tab/product/{{categoria.code}}/{{item.oid}}">
+
+                            <img class="img-responsive center-block" ng-src="{{connection.url}}/wr-resource/{{item.pictureDefault}}" style="width:50%">
+                        </a>
+                        <p>{{item.price | currency:"€"}}</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
