@@ -1,6 +1,22 @@
 <ion-view view-title="{{categoria.name}}">
     <ion-content>
+        <!--
+                    <div class="col " ng-repeat="item in categoria.Products" style="padding:2% 2% 2% 2%">
 
+                        <div class=" list">
+                            <div class="text-center item item-body" >
+
+                               <h2> {{item.name}}</h2> <p></p>
+                                <a href="#/tab/product/{{categoria.code}}/{{item.oid}}">
+
+                                    <img class="img-responsive center-block" ng-src="{{connection.url}}/wr-resource/{{item.pictureDefault}}" style="width:45%" >
+                                </a><p></p>
+                                <h2>{{item.price | currency:"€"}}</h2>
+
+                            </div>
+                        </div>
+        </div>
+        -->
         <div class="row " style="flex-wrap:wrap">
                 <div class="col col-50 " ng-repeat="item in categoria.Products" >
                     <div class=" list">
