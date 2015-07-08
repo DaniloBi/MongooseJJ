@@ -121,6 +121,7 @@ angular.module('starter.controllers', [])
                     app.onPrepareRender);
             },
             onUserCanceled: function (result) {
+                alert("Pagamento fallito, riprovare");
                 console.log(result);
             }
         };

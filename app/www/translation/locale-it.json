@@ -13,6 +13,11 @@
   "SIGNIN_FAILED":"Login avvenuto con successo",
   "SIGNIN_SUCCESSFULL":"Login Fallito",
   "BUY_BUTTON":"Acquista",
-  "DESCRIPTION":"Descrizione"
+  "DESCRIPTION":"Descrizione",
+  "BUY_DETAIL":"Modifica inforazioni acquisto",
+  "PAYMENT_OUTCOME_SUCCESSFULL":"Pagamento avvenuto con successo",
+  "PAYMENTO_OUTCOME_FAILED":"Pagamento fallito, riprovare",
+  "PROFILE":"Profilo",
+  "EDIT_PROFILE":"Modifica profilo"
 
 }
