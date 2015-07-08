@@ -1,5 +1,18 @@
 {
-  "POPULAR" : "Popular",
-  "LATEST" : "Latest"
+  "SIGNUP_SIGNIN" : "Login / Registrazione",
+  "YOUR_PURCHASES":"I tuoi acquisti",
+  "WISHLIST": "Wishlist",
+  "LANGUAGE": "Lingua",
+  "NEWS":"News",
+  "FAQ":"FAQ",
+  "SIGNUP_MESSAGE":"Non hai un account?",
+  "SIGNUP_BUTTON":"Crea un account",
+  "SEND_BUTTON":"Invio",
+  "SIGNUP_FAILED":"Registrazione fallita",
+  "SIGNUP_SUCCESSFULL":"Registrazione avvenuta con successo",
+  "SIGNIN_FAILED":"Login avvenuto con successo",
+  "SIGNIN_SUCCESSFULL":"Login Fallito",
+  "BUY_BUTTON":"Acquista",
+  "DESCRIPTION":"Descrizione"
 
 }

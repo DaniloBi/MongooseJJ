@@ -4,12 +4,12 @@ angular.module('starter.controllers', [])
 
     })
     .controller('ProductCtrl', function ($state, $scope, $stateParams, filterFilter, $rootScope) {
-
+        $rootScope.product={};
         $scope.cat = filterFilter($scope.catalogo, {code: $stateParams.catOid})[0];
         $rootScope.element = filterFilter($scope.cat.Products, {oid: $stateParams.productCode})[0];
-        $rootScope.user['price'] = $rootScope.element.price;
 
-        $rootScope.user["product"] = $rootScope.element.originalOid;
+        $rootScope.product['price'] = $rootScope.element.price;
+        $rootScope.product['product'] = $rootScope.element.originalOid;
 // Per il <select>
         $scope.mapTaglia = $rootScope.element.Taglia;
         $scope.mapColore = $rootScope.element.Colore;
@@ -28,6 +28,10 @@ angular.module('starter.controllers', [])
 
         console.log(JSON.stringify($rootScope.user));
         $scope.startPayment = function () {
+            $rootScope.user.size=$rootScope.product.taglia;
+            $rootScope.user.color=$rootScope.product.colore;
+            $rootScope.user.product = $rootScope.product.product;
+            $rootScope.user.price =  $rootScope.product.price;
         alert("Avvio Pagamento");
             ServerServices.orderCreation($rootScope.user)
                 .success(function (response) {
@@ -130,6 +134,10 @@ angular.module('starter.controllers', [])
         console.log(filterFilter($scope.catalogo, {code: $stateParams.catOid})[0]);
         $scope.categoria = filterFilter($scope.catalogo, {code: $stateParams.catOid})[0];
 
+        //if ($scope.categoria.Products[0] == '[]'){
+
+        console.log($scope.categoria.name);
+        //}
         //console.log($scope.categoria);
     })
 
