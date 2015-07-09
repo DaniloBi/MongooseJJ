@@ -18,11 +18,10 @@
 
     <ion-side-menu side="left" class="dark-bg">
         <ion-header-bar class="bar-dark">
-            <h1 class="title">Categorie</h1>
+            <h1 class="title" translate>CATEGORIES</h1>
         </ion-header-bar>
         <ion-content>
             <ion-list class="dark-bg">
-
                 <ion-item class="item-icon-right" menu-Close-Keep-History href="#/tab/home">
                     Home <i class="icon fa fa-home"></i>
                 </ion-item>
@@ -63,7 +62,7 @@
                 <section ng-if="!connected">
                     {{UserService.getCurrentUser().email}}
                     <ion-item class="item item-icon-right" menu-close ng-click="openModal(1)">
-                     Login / Registrazione <i class="icon fa fa-lock"></i>
+                        <section translate>SIGNUP_SIGNIN</section> <i class="icon fa fa-lock"></i>
                     </ion-item>
                 </section>
                 <section ng-if="connected">
@@ -72,23 +71,23 @@
                     </ion-item>
                 </section>
                 <ion-item class="item item-icon-right" menu-Close-Keep-History >
-                    I tuoi Acquisti <i class="icon fa fa-shopping-cart" ></i>
+                    <section translate>YOUR_PURCHASES</section> <i class="icon fa fa-shopping-cart" ></i>
                 </ion-item>
                 <ion-item class="item-icon-right" menu-close>
-                    Wishlist <i class="icon fa fa-heart"></i>
+                    <section translate>WISHLIST</section> <i class="icon fa fa-heart"></i>
                 </ion-item>
                 <ion-item class="item-icon-right" menu-close>
-                    Lingua <i class="icon fa fa-flag"></i>
+                    <section translate>LANGUAGE</section> <i class="icon fa fa-flag"></i>
                 </ion-item>
                 <ion-item class="item-icon-right" menu-close>
-                    News <i class="icon fa fa-envelope"></i>
+                    <section translate>NEWS </section> <i class="icon fa fa-envelope"></i>
                 </ion-item>
                 <ion-item class="item-icon-right" menu-close href="#/tab/faq">
-                    FAQ <i class="icon fa fa-question" ></i>
+                    <section translate>FAQ </section> <i class="icon fa fa-question" ></i>
                 </ion-item>
                 <section ng-if="user.email!=''">
                     <ion-item class="item item-icon-right" menu-close ng-click="logout()">
-                        Log out <i class="icon fa fa-lock"></i>
+                        <section translate>LOGOUT </section> <i class="icon fa fa-lock"></i>
                     </ion-item>
                 </section>
             </ion-list>

@@ -5,6 +5,8 @@
   "LANGUAGE": "Lingua",
   "NEWS":"News",
   "FAQ":"FAQ",
+  "LOGOUT":"Logout",
+  "LOGIN":"Login",
   "SIGNUP_MESSAGE":"Non hai un account?",
   "SIGNUP_BUTTON":"Crea un account",
   "SEND_BUTTON":"Invio",
@@ -14,10 +16,11 @@
   "SIGNIN_SUCCESSFULL":"Login Fallito",
   "BUY_BUTTON":"Acquista",
   "DESCRIPTION":"Descrizione",
+  "PROFILE_CONFIRMATION":"Conferma informazioni",
   "BUY_DETAIL":"Modifica inforazioni acquisto",
   "PAYMENT_OUTCOME_SUCCESSFULL":"Pagamento avvenuto con successo",
   "PAYMENTO_OUTCOME_FAILED":"Pagamento fallito, riprovare",
   "PROFILE":"Profilo",
-  "EDIT_PROFILE":"Modifica profilo"
-
+  "EDIT_PROFILE":"Modifica profilo",
+  "CATEGORIES":"Categorie"
 }
