@@ -1,7 +1,7 @@
 <ion-view view-title="Prodotto">
-    <ion-content>
+    <ion-content >
 
-        <div >
+        <div class="text-center">
             <div >
                 <h1> {{element.name}} </h1>
             </div>
@@ -26,15 +26,15 @@
 
                 <div class="item ">
                     <button class="button button-block button-dark item-icon-right" type="submit">
-                        Acquista<i class="icon fa fa-shopping-cart"></i>
+                       <section translate>Acquista</section><i class="icon fa fa-shopping-cart"></i>
                     </button>
                 </div>
                 <div class="list">
 
                     <label class="item item-input item-select">
 
-                        <div class="input-label">
-                            Colore
+                        <div class="input-label" translate>
+                            LABEL_COLOR
                         </div>
 
                         <select ng-model="user.colore" ng-options="colore.name as colore.name for colore in mapColore"
@@ -42,19 +42,19 @@
 
                     </label>
                     <label class="item item-input item-select">
-                        <div class="input-label">
-                            Taglia
+                        <div class="input-label" translate>
+                            LABEL_SIZE
                         </div>
                         <select ng-model="user.taglia" ng-options="taglia.name as taglia.name for taglia in mapTaglia"
                                 required></select>
 
                     </label>
 
-                    </select>
+
                 </div>
             </form>
 
-            <h4>Descrizione:</h4>
+            <h4 translate>DESCRIPTION</h4>
 
             {{element.descriptionLong}}
 

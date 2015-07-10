@@ -15,6 +15,8 @@
   "SIGNIN_FAILED":"Login avvenuto con successo",
   "SIGNIN_SUCCESSFULL":"Login Fallito",
   "BUY_BUTTON":"Acquista",
+  "LABEL_COLOR":"Colore",
+  "LABEL_SIZE":"Taglia",
   "DESCRIPTION":"Descrizione",
   "PROFILE_CONFIRMATION":"Conferma informazioni",
   "BUY_DETAIL":"Modifica inforazioni acquisto",

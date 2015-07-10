@@ -1,10 +1,18 @@
 angular.module('starter.controllers', [])
 
-    .controller('HomeCtrl', function () {
+    .controller('HomeCtrl', function (UserService,$rootScope) {
+        if (UserService.getCurrentUser().email == undefined)
+            console.log("Vuoto");
+        else {
+            $rootScope.user = UserService.getCurrentUser();
+            $scope.doLogin();
+        }
+
+
 
     })
     .controller('ProductCtrl', function ($state, $scope, $stateParams, filterFilter, $rootScope) {
-        $rootScope.product={};
+        $rootScope.product = {};
         $scope.cat = filterFilter($scope.catalogo, {code: $stateParams.catOid})[0];
         $rootScope.element = filterFilter($scope.cat.Products, {oid: $stateParams.productCode})[0];
 
@@ -14,7 +22,6 @@ angular.module('starter.controllers', [])
         $scope.mapTaglia = $rootScope.element.Taglia;
         $scope.mapColore = $rootScope.element.Colore;
         console.log($scope.map);
-
 
 
         $scope.redirect = function () {
@@ -28,11 +35,11 @@ angular.module('starter.controllers', [])
 
         console.log(JSON.stringify($rootScope.user));
         $scope.startPayment = function () {
-            $rootScope.user.size=$rootScope.product.taglia;
-            $rootScope.user.color=$rootScope.product.colore;
+            $rootScope.user.size = $rootScope.product.taglia;
+            $rootScope.user.color = $rootScope.product.colore;
             $rootScope.user.product = $rootScope.product.product;
-            $rootScope.user.price =  $rootScope.product.price;
-        alert("Avvio Pagamento");
+            $rootScope.user.price = $rootScope.product.price;
+            alert("Avvio Pagamento");
             ServerServices.orderCreation($rootScope.user)
                 .success(function (response) {
 
@@ -417,8 +424,8 @@ angular.module('starter.controllers', [])
 
             ServerServices.loginRequest($rootScope.user)
                 .success(function (response) {
-                    $rootScope.connected=true;
-                    console.log("login effettuato: "+ $rootScope.user);
+                    $rootScope.connected = true;
+                    console.log("login effettuato: " + $rootScope.user);
 
                     StorageService.setUserFromLogin(response[0]);
 
@@ -435,7 +442,7 @@ angular.module('starter.controllers', [])
                     //$rootScope.user=undefined;
                     alert("Login fallito");
                     $rootScope.user = {};
-                    console.log("UserMaster: "+JSON.stringify($rootScope.userMaster));
+
                     //console.log("Errore" + JSON.stringify($rootScope.user));
 
                 });
@@ -534,7 +541,7 @@ angular.module('starter.controllers', [])
             ServerServices.registrationRequest($rootScope.user)
                 .success(function (response) {
                     console.log(response);
-                    $rootScope.user = $rootScope.userMaster;
+                    $rootScope.user = {};
                     alert("Registrazione avvenuta con successo");
                 })
                 .error(function (response) {
