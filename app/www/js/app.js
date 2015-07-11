@@ -86,7 +86,7 @@ angular.module('starter', [
             }]
         });
         $translateProvider.uniformLanguageTag('bcp47')
-            .preferredLanguage('it');
+            .preferredLanguage('en');
     }])
 
     .config(function ($stateProvider, $urlRouterProvider) {

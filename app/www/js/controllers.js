@@ -276,31 +276,25 @@ angular.module('starter.controllers', [])
      })
      */   //Old Login Ctrl
     .controller('TabCtrl', function ($scope, $cordovaOauth, StorageService, SocialLogin, $filter, $log,
-                                     $rootScope, $ionicModal, $state, catalogue, UserService, $http, ServerServices, CONNECTION) {
+                                     $rootScope, $ionicModal, $state, catalogue, UserService, $http, ServerServices, CONNECTION,$translate) {
         $scope.connection = CONNECTION;
         $scope.catalogo = catalogue;
-        console.log($scope.catalogo);
-        $scope.currentImage = '';
-        $scope.currentUser = '';
-        $rootScope.connected = false;
-        $rootScope.userMaster =
-        {
-            "userName": "",
-            "email": "",
-            "password": "",
-            "cap": "",
-            "country": "",
-            "state": "",
-            "city": "",
-            "address": "",
-            "fiscalCode": "",
-            "mobile": "",
-            "telephone": "",
-            "surname": "",
-            "name": "",
-            "streeNumber": ""
-        };
 
+
+
+        $rootScope.language={};
+        //$rootScope.language.code = "IT_it";
+
+        console.log($rootScope.language);
+        $rootScope.connected = false;
+
+        $scope.changeLanguage=function(){
+            console.log($rootScope.language);
+            if($rootScope.language.code=="IT_it")
+                $translate.use("it");
+            else if($rootScope.language.code=="EN_en")
+                $translate.use("en");
+        };
         $rootScope.user =
         {
             "userName": "",
@@ -464,18 +458,29 @@ angular.module('starter.controllers', [])
         }).then(function (modal) {
             $scope.oModal2 = modal;
         });
+        $ionicModal.fromTemplateUrl('templates/modalLanguage.html', {
+            id: 3,
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal3 = modal;
+        });
 
         $scope.openModal = function (index) {
             if (index == 1)
                 $scope.oModal1.show();
             else if (index == 2)
                 $scope.oModal2.show();
+            else if (index == 3)
+                $scope.oModal3.show();
         };
         $scope.closeModal = function (index) {
             if (index == 1)
                 $scope.oModal1.hide();
-            if (index == 2)
+            else if (index == 2)
                 $scope.oModal2.hide();
+            else if (index == 3)
+                $scope.oModal3.hide();
         };
         $scope.openRegistrazione = function () {
             $scope.closeModal(1);

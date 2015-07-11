@@ -1,0 +1,17 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-dark">
+        <h1 class="title" translate>LANGUAGE</h1>
+        <button class="button button-icon button-clear ion-close-round" menu-toggle="right" ng-click="closeModal(3)">
+        </button>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <form ng-submit="changeLanguage()" class="text-center">
+            <select ng-model="language.code">
+                <option value="EN_en">ENG</option>
+                <option value="IT_it">ITA</option>
+            </select>
+            <button class="button button-block button-positive" type="submit" translate>SEND_BUTTON</button>
+        </form>
+        {{language.code}}
+    </ion-content>
+</ion-modal-view>
