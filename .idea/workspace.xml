@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="458b91af-9b3c-4869-8481-78bb2dcc656a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/www/js/app.js" afterPath="$PROJECT_DIR$/app/www/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/www/js/controllers.js" afterPath="$PROJECT_DIR$/app/www/js/controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/www/templates/menu.html" afterPath="$PROJECT_DIR$/app/www/templates/menu.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/www/templates/modalLanguage.html" afterPath="$PROJECT_DIR$/app/www/templates/modalLanguage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/www/js/service.js" afterPath="$PROJECT_DIR$/app/www/js/service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/www/templates/tab-tuoiAcquisti.html" afterPath="$PROJECT_DIR$/app/www/templates/tab-tuoiAcquisti.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="app.iws" />
@@ -546,7 +540,13 @@
       <option name="project" value="LOCAL" />
       <updated>1436642850865</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Aggiunta la richiesta al server corretta in base alla lingua. Modificato il resourse in Service, Aggiunte funzioni di gestione del catalogo in controller.tabCtrl">
+      <created>1436654037786</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1436654037786</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView">
@@ -620,7 +620,8 @@
     <MESSAGE value="Aggiornamento Dizionario lingua &#10;&#10;&quot;Tab-acquista&quot; Ultima scheda modificata (dall'alto)" />
     <MESSAGE value="Completato dizionario italiano - inglese&#10;Modificato il homeCtrl per la gestione utente già connesso" />
     <MESSAGE value="Inserito il link alle due lingue. Attivato il link Lingue, menu laterale destro" />
-    <option name="LAST_COMMIT_MESSAGE" value="Inserito il link alle due lingue. Attivato il link Lingue, menu laterale destro" />
+    <MESSAGE value="Aggiunta la richiesta al server corretta in base alla lingua. Modificato il resourse in Service, Aggiunte funzioni di gestione del catalogo in controller.tabCtrl" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aggiunta la richiesta al server corretta in base alla lingua. Modificato il resourse in Service, Aggiunte funzioni di gestione del catalogo in controller.tabCtrl" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
