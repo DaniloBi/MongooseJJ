@@ -280,7 +280,7 @@ angular.module('starter.controllers', [])
                                      $rootScope, $ionicModal, $state, CatalogueService, UserService, $http, ServerServices, CONNECTION, $translate) {
         $scope.connection = CONNECTION;
         $rootScope.language = {};
-        $rootScope.language.code = "IT_it";
+        $rootScope.language.code = "EN_en";
         //$scope.catalogo = catalogue;
         $scope.getCatalogueLang = function (lang) {
             CatalogueService.cat_lang(lang).then(function (result) {
