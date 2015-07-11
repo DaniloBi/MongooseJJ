@@ -60,7 +60,7 @@
         <ion-content>
             <ion-list class="dark-bg">
                 <section ng-if="!connected">
-                    {{UserService.getCurrentUser().email}}
+
                     <ion-item class="item item-icon-right" menu-close ng-click="openModal(1)">
                         <section translate>SIGNUP_SIGNIN</section> <i class="icon fa fa-lock"></i>
                     </ion-item>
@@ -70,7 +70,7 @@
                         {{user.email}} <i class="icon fa fa-lock"></i>
                     </ion-item>
                 </section>
-                <ion-item class="item item-icon-right" menu-Close-Keep-History >
+                <ion-item class="item item-icon-right" menu-Close-Keep-History href="#/tab/tuoiAcquisti">
                     <section translate>YOUR_PURCHASES</section> <i class="icon fa fa-shopping-cart" ></i>
                 </ion-item>
                 <ion-item class="item-icon-right" menu-close>
@@ -85,7 +85,7 @@
                 <ion-item class="item-icon-right" menu-close href="#/tab/faq">
                     <section translate>FAQ </section> <i class="icon fa fa-question" ></i>
                 </ion-item>
-                <section ng-if="user.email!=''">
+                <section ng-if="connected">
                     <ion-item class="item item-icon-right" menu-close ng-click="logout()">
                         <section translate>LOGOUT </section> <i class="icon fa fa-lock"></i>
                     </ion-item>

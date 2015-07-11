@@ -102,12 +102,13 @@ angular.module('starter', [
                 url: "/tab",
                 abstract: true,
                 templateUrl: "templates/menu.html",
-                controller: 'TabCtrl',
-                resolve: {
+                controller: 'TabCtrl'
+                /*,
+               resolve: {
                     catalogue: function (CatalogueService) {
                         return CatalogueService.all()
                     }
-                }
+                }*/
             })
             // Each tab has its own nav history stack:
             .state('tab.home', {

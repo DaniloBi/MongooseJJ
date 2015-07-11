@@ -1,13 +1,12 @@
 angular.module('starter.controllers', [])
 
-    .controller('HomeCtrl', function (UserService,$rootScope) {
+    .controller('HomeCtrl', function (UserService, $rootScope) {
         if (UserService.getCurrentUser().email == undefined)
             console.log("Vuoto");
         else {
             $rootScope.user = UserService.getCurrentUser();
             $scope.doLogin();
         }
-
 
 
     })
@@ -149,22 +148,24 @@ angular.module('starter.controllers', [])
         //console.log($scope.categoria);
     })
 
-    .controller("tuoiAcquistiCtrl", function (ServerServices, $rootScope, $scope) {
+    .controller("tuoiAcquistiCtrl", function (ServerServices, $rootScope, $scope, $state) {
 
-        if ($rootScope.user == undefined) {
+        if (!$rootScope.connected) {
             alert("Devi effettuare l'accesso");
-            $state.go('app.home');
+            $state.go('tab.home');
 
         }
-        $scope.lista = {};
-        ServerServices.orderList($rootScope.user)
-            .success(function (response) {
-                console.log(response);
-                $scope.lista = response;
-            })
-            .error(function (response) {
-                console.log(response);
-            })
+        else {
+            $scope.lista = {};
+            ServerServices.orderList($rootScope.user)
+                .success(function (response) {
+                    console.log(response);
+                    $scope.lista = response;
+                })
+                .error(function (response) {
+                    console.log(response);
+                })
+        }
     })
     /* .controller('LoginCtrlOld', function ($scope, $log, $state, $cordovaOauth, PersistenceService, SocialLogin) {
      PersistenceService.getSocialLogin().then(function (data) {
@@ -276,24 +277,37 @@ angular.module('starter.controllers', [])
      })
      */   //Old Login Ctrl
     .controller('TabCtrl', function ($scope, $cordovaOauth, StorageService, SocialLogin, $filter, $log,
-                                     $rootScope, $ionicModal, $state, catalogue, UserService, $http, ServerServices, CONNECTION,$translate) {
+                                     $rootScope, $ionicModal, $state, CatalogueService, UserService, $http, ServerServices, CONNECTION, $translate) {
         $scope.connection = CONNECTION;
-        $scope.catalogo = catalogue;
+        $rootScope.language = {};
+        $rootScope.language.code = "IT_it";
+        //$scope.catalogo = catalogue;
+        $scope.getCatalogueLang = function (lang) {
+            CatalogueService.cat_lang(lang).then(function (result) {
+                $scope.catalogo = result;
+            });
+        };
 
+        $scope.getCatalogueLang($rootScope.language);
+        /*       CatalogueService.all().then(function(result){
 
-
-        $rootScope.language={};
-        //$rootScope.language.code = "IT_it";
-
-        console.log($rootScope.language);
+         });
+         */
+        console.log($rootScope.catalogo);
         $rootScope.connected = false;
 
-        $scope.changeLanguage=function(){
+        $scope.changeLanguage = function () {
             console.log($rootScope.language);
-            if($rootScope.language.code=="IT_it")
+            if ($rootScope.language.code == "IT_it") {
                 $translate.use("it");
-            else if($rootScope.language.code=="EN_en")
+                $scope.getCatalogueLang($rootScope.language);
+                $scope.closeModal(3);
+            }
+            else if ($rootScope.language.code == "EN_en") {
                 $translate.use("en");
+                $scope.getCatalogueLang($rootScope.language);
+                $scope.closeModal(3);
+            }
         };
         $rootScope.user =
         {

@@ -100,17 +100,21 @@ angular.module('starter.services', ['ngResource', 'LocalForageModule'])
         }
     }])
 
-    .factory("CatalogueService", function ($resource, filterFilter, $q, CONNECTION,$rootScope) {
+    .factory("CatalogueService", function ($resource, filterFilter, $q, CONNECTION) {
         //var catalogue = $resource('json/catalogue.json');
-        console.log($rootScope.language);
-        var catalogue = $resource(CONNECTION.url+"/services/catalogue/all.do",{"code":"IT_it"});
+        //console.log($rootScope.language);
+        //var catalogue = $resource(CONNECTION.url+"/services/catalogue/all.do",{"code":"EN_en"});
+
 
         return {
+
 
             all: function all() {
                 return catalogue.query().$promise
             },
-
+            cat_lang: function cat_lang(lang){
+                return $resource(CONNECTION.url+"/services/catalogue/all.do",lang).query().$promise;
+            },
             filterCat: function filterCat(id) {
                 var deferred = $q.defer();
 
