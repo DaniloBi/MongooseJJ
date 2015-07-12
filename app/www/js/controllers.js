@@ -30,7 +30,7 @@ angular.module('starter.controllers', [])
 
 
     })
-    .controller('AcquistaCtrl', function ($scope, $rootScope, ServerServices) {
+    .controller('AcquistaCtrl', function ($scope, $rootScope, ServerServices,$translate) {
 
         console.log(JSON.stringify($rootScope.user));
         $scope.startPayment = function () {
@@ -38,7 +38,7 @@ angular.module('starter.controllers', [])
             $rootScope.user.color = $rootScope.product.colore;
             $rootScope.user.product = $rootScope.product.product;
             $rootScope.user.price = $rootScope.product.price;
-            alert("Avvio Pagamento");
+
             ServerServices.orderCreation($rootScope.user)
                 .success(function (response) {
 
@@ -82,10 +82,14 @@ angular.module('starter.controllers', [])
                 $scope.invioDatiPagamento['transactionId'] = payment.response.id;
                 ServerServices.orderConfermation($scope.invioDatiPagamento)
                     .success(function (response) {
-                        alert("Pagamento avvenuto con successo");
+                        $translate('PAYMENT_OUTCOME_SUCCESSFULL').then(function (result) {
+                            alert(result);
+                        });
                     })
                     .error(function (response) {
-                        alert("Errore");
+                        $translate('PAYMENTO_OUTCOME_FAILED').then(function (result) {
+                            alert(result);
+                        });
                     })
             },
 
@@ -127,7 +131,9 @@ angular.module('starter.controllers', [])
                     app.onPrepareRender);
             },
             onUserCanceled: function (result) {
-                alert("Pagamento fallito, riprovare");
+                $translate('PAYMENTO_OUTCOME_FAILED').then(function (result) {
+                    alert(result);
+                });
                 console.log(result);
             }
         };
@@ -151,7 +157,9 @@ angular.module('starter.controllers', [])
     .controller("tuoiAcquistiCtrl", function (ServerServices, $rootScope, $scope, $state) {
 
         if (!$rootScope.connected) {
-            alert("Devi effettuare l'accesso");
+            $translate('LOGIN_REQUIRED').then(function (result) {
+                alert(result);
+            });
             $state.go('tab.home');
 
         }
@@ -345,7 +353,10 @@ angular.module('starter.controllers', [])
                                     StorageService.setUserFromLogin(response[0]);
                                     $rootScope.user = UserService.getCurrentUser();
                                     $rootScope.user.country = "Italia";
-                                    alert("Login effettuato con successo");
+
+                                    $translate('LOGIN_SUCCESSFUL').then(function (result) {
+                                        alert(result);
+                                    });
                                 })
                                 .error(function () {
                                     ServerServices.registrationRequest($rootScope.user)
@@ -355,10 +366,14 @@ angular.module('starter.controllers', [])
                                                     StorageService.setUserFromLogin(response[0]);
                                                     $rootScope.user = UserService.getCurrentUser();
                                                     $rootScope.user.country = "Italia";
-                                                    alert("Login effettuato con successo")
+                                                    $translate('LOGIN_SUCCESSFUL').then(function (result) {
+                                                        alert(result);
+                                                    });
                                                 })
                                                 .error(function (response) {
-                                                    alert("Login fallito, riprovare");
+                                                    $translate('LOGIN_FAILED').then(function (result) {
+                                                        alert(result);
+                                                    });
                                                     console.log("Response login: " * response)
                                                 })
                                         })
@@ -392,7 +407,9 @@ angular.module('starter.controllers', [])
                                     StorageService.setUserFromLogin(response[0]);
                                     $rootScope.user = UserService.getCurrentUser();
                                     $rootScope.user.country = "Italia";
-                                    alert("Login effettuato con successo")
+                                    $translate('LOGIN_SUCCESSFUL').then(function (result) {
+                                        alert(result);
+                                    });
                                 })
                                 .error(function () {
                                     ServerServices.registrationRequest($rootScope.user)
@@ -402,10 +419,14 @@ angular.module('starter.controllers', [])
                                                     StorageService.setUserFromLogin(response[0]);
                                                     $rootScope.user = UserService.getCurrentUser();
                                                     $rootScope.user.country = "Italia";
-                                                    alert("Login effettuato con successo")
+                                                    $translate('LOGIN_SUCCESSFUL').then(function (result) {
+                                                        alert(result);
+                                                    });
                                                 })
                                                 .error(function (response) {
-                                                    alert("Login fallito, riprovare");
+                                                    $translate('LOGIN_FAILED').then(function (result) {
+                                                        alert(result);
+                                                    });
                                                     console.log("Response login: " + JSON.stringify(response))
                                                 })
                                         })
@@ -424,7 +445,10 @@ angular.module('starter.controllers', [])
             $scope.closeModal(1);
         };
         $scope.logout = function () {
-            window.location.href = "index.html";
+            $rootScope.connected=false;
+            $rootScope.user={};
+            $state.go('tab.home');
+            //window.location.href = "index.html";
         };
 
         $scope.doLogin = function () {
@@ -440,15 +464,21 @@ angular.module('starter.controllers', [])
                     $rootScope.user = UserService.getCurrentUser();
                     $rootScope.user.country = "Italia";
                     console.log("Current user: " + JSON.stringify(UserService.getCurrentUser().name));
-                    alert("Login effettuato con successo");
+                    //$scope.trad=$translate('LOGIN_SUCCESSFUL');
+
+                    $translate('LOGIN_SUCCESSFUL').then(function (result) {
+                        alert(result);
+                    });
+
 
                     console.log("Nome: " + $rootScope.user.name);
 
                 })
                 .error(function () {
-                    console.log("erroraccio");
                     //$rootScope.user=undefined;
-                    alert("Login fallito");
+                    $translate('LOGIN_FAILED').then(function (result) {
+                        alert(result);
+                    });
                     $rootScope.user = {};
 
                     //console.log("Errore" + JSON.stringify($rootScope.user));
@@ -550,10 +580,10 @@ angular.module('starter.controllers', [])
         }
 
     })
-    .controller('RegistrationCtrl', function ($scope, $rootScope, $state, $http, ServerServices) {
+    .controller('RegistrationCtrl', function ($scope, $rootScope, $state, $http, ServerServices,$translate) {
 
         $scope.doRegistration = function () {
-            alert("Registrazione");
+
             //$scope.user['email']='a@b.it';
             //$scope.user['password']='asd123';
 
@@ -561,11 +591,15 @@ angular.module('starter.controllers', [])
                 .success(function (response) {
                     console.log(response);
                     $rootScope.user = {};
-                    alert("Registrazione avvenuta con successo");
+                    $translate('REGISTRATION_SUCCESSFUL').then(function (result) {
+                        alert(result);
+                    });
                 })
                 .error(function (response) {
                     $rootScope.user = {};
-                    alert("Registrazione fallita");
+                    $translate('REGISTRATION_FAILED').then(function (result) {
+                        alert(result);
+                    });
                     console.log("Errore" + JSON.stringify($rootScope.user));
 
                     console.log(response)

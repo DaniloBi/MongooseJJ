@@ -62,7 +62,7 @@
                 <section ng-if="!connected">
 
                     <ion-item class="item item-icon-right" menu-close ng-click="openModal(1)">
-                        <section translate>SIGNUP_SIGNIN</section> <i class="icon fa fa-lock"></i>
+                       {{'SIGNUP_SIGNIN'|translate}} <i class="icon fa fa-lock"></i>
                     </ion-item>
                 </section>
                 <section ng-if="connected">
@@ -71,19 +71,19 @@
                     </ion-item>
                 </section>
                 <ion-item class="item item-icon-right" menu-Close-Keep-History href="#/tab/tuoiAcquisti">
-                    <section translate>YOUR_PURCHASES</section> <i class="icon fa fa-shopping-cart" ></i>
+                    {{'YOUR_PURCHASES'|translate}} <i class="icon fa fa-shopping-cart" ></i>
                 </ion-item>
                 <ion-item class="item-icon-right" menu-close>
-                    <section translate>WISHLIST</section> <i class="icon fa fa-heart"></i>
+                    {{'WISHLIST' | translate}} <i class="icon fa fa-heart"></i>
                 </ion-item>
                 <ion-item class="item-icon-right" menu-close ng-click="openModal(3)">
-                    <section translate>LANGUAGE</section> <i class="icon fa fa-flag"></i>
+                    {{'LANGUAGE'|translate}} <i class="icon fa fa-flag"></i>
                 </ion-item>
                 <ion-item class="item-icon-right" menu-close>
-                    <section translate>NEWS </section> <i class="icon fa fa-envelope"></i>
+                  {{'NEWS' | translate}} <i class="icon fa fa-envelope"></i>
                 </ion-item>
                 <ion-item class="item-icon-right" menu-close href="#/tab/faq">
-                    <section translate>FAQ </section> <i class="icon fa fa-question" ></i>
+                    {{'FAQ' | translate}} <i class="icon fa fa-question" ></i>
                 </ion-item>
                 <section ng-if="connected">
                     <ion-item class="item item-icon-right" menu-close ng-click="logout()">

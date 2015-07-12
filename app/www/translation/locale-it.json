@@ -22,7 +22,16 @@
   "BUY_DETAIL":"Modifica inforazioni acquisto",
   "PAYMENT_OUTCOME_SUCCESSFULL":"Pagamento avvenuto con successo",
   "PAYMENTO_OUTCOME_FAILED":"Pagamento fallito, riprovare",
-  "PROFILE":"Profilo",
   "EDIT_PROFILE":"Modifica profilo",
-  "CATEGORIES":"Categorie"
+  "CATEGORIES":"Categorie",
+  "PRODUCT":"Prodotto",
+  "LOGIN_SUCCESSFUL":"Login avvenuto con successo",
+  "LOGIN_FAILED":"Login fallito, riprovare",
+  "REGISTRATION_SUCCESSFUL":"Registrazione avvenuta con successo",
+  "REGISTRATION_FAILED":"Registrazione fallita, riprovare!",
+  "PROFILE":"Profilo",
+  "ACCOUNT_CREATION":"Crea account",
+  "PURCHASE":"Acquista",
+  "LOGIN_REQUIRED":"È necessario effettuare il login",
+  "NAME":"nome"
 }

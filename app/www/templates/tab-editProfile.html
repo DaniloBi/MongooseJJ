@@ -1,4 +1,4 @@
-<ion-view view-title="Modifica Profilo">
+<ion-view view-title="{{'EDIT_PROFILE' | translate }}">
     <ion-content padding="true">
         <form ng-submit="editProfile()">
             <div class="list list-inset">
@@ -6,7 +6,7 @@
                     <input type="text" placeholder="Email" ng-model="userTemp.email" disabled>
                 </label>
                 <label class="item item-input">
-                    <input type="text" placeholder="Nome" ng-model="userTemp.name" required>
+                    <input type="text" placeholder="{{'NAME'|translate}}" ng-model="userTemp.name" required>
                 </label>
                 <label class="item item-input">
                     <input type="text" placeholder="Cognome" ng-model="userTemp.surname" required>
