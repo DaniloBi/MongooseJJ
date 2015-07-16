@@ -33,5 +33,9 @@
   "ACCOUNT_CREATION":"Crea account",
   "PURCHASE":"Acquista",
   "LOGIN_REQUIRED":"È necessario effettuare il login",
-  "NAME":"nome"
+  "LANGUAGE_TEXT":"Seleziona la lingua / Select the language",
+  "NAME":"Nome",
+
+  "SURNAME":"Cognome"
+
 }

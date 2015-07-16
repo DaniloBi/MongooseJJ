@@ -34,5 +34,6 @@
   "ACCOUNT_CREATION": "Account creation",
   "PURCHASE": "Purchase",
   "LOGIN_REQUIRED":"Login required",
-  "NAME":"name"
+  "LANGUAGE_TEXT":"Seleziona la lingua / Select the language",
+  "NAME":"Name"
 }
