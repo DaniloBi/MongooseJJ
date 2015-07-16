@@ -83,12 +83,12 @@ angular.module('starter.controllers', [])
                 ServerServices.orderConfermation($scope.invioDatiPagamento)
                     .success(function (response) {
                         $translate('PAYMENT_OUTCOME_SUCCESSFULL').then(function (result) {
-                            alert(result);
+                            $scope.showAlert('',result);
                         });
                     })
                     .error(function (response) {
                         $translate('PAYMENTO_OUTCOME_FAILED').then(function (result) {
-                            alert(result);
+                            $scope.showAlert('',result);
                         });
                     })
             },
@@ -132,7 +132,7 @@ angular.module('starter.controllers', [])
             },
             onUserCanceled: function (result) {
                 $translate('PAYMENTO_OUTCOME_FAILED').then(function (result) {
-                    alert(result);
+                    $scope.showAlert('',result);
                 });
                 console.log(result);
             }
@@ -158,7 +158,7 @@ angular.module('starter.controllers', [])
 
         if (!$rootScope.connected) {
             $translate('LOGIN_REQUIRED').then(function (result) {
-                alert(result);
+                $scope.showAlert('',result);
             });
             $state.go('tab.home');
 
@@ -284,17 +284,30 @@ angular.module('starter.controllers', [])
 
      })
      */   //Old Login Ctrl
-    .controller('TabCtrl', function ($scope, $cordovaOauth, StorageService, SocialLogin, $filter, $log,
+    .controller('TabCtrl', function ($scope, $cordovaOauth, StorageService, SocialLogin, $filter, $log,$ionicPopup,
                                      $rootScope, $ionicModal, $state, CatalogueService, UserService, $http, ServerServices, CONNECTION, $translate) {
         $scope.connection = CONNECTION;
+
         $rootScope.language = {};
         $rootScope.language.code = "EN_en";
         //$scope.catalogo = catalogue;
         $scope.getCatalogueLang = function (lang) {
             CatalogueService.cat_lang(lang).then(function (result) {
                 $scope.catalogo = result;
+                console.log($scope.catalogo)
             });
         };
+        $scope.showAlert = function(title,message) {
+            var alertPopup = $ionicPopup.alert({
+                title: title,
+                cssClass: "text-center",
+                template: message
+            });
+            alertPopup.then(function(res) {
+                //console.log('Thank you for not eating my delicious ice cream cone    '+res);
+            });
+        };
+
 
         $scope.getCatalogueLang($rootScope.language);
         /*       CatalogueService.all().then(function(result){
@@ -355,7 +368,7 @@ angular.module('starter.controllers', [])
                                     $rootScope.user.country = "Italia";
 
                                     $translate('LOGIN_SUCCESSFUL').then(function (result) {
-                                        alert(result);
+                                        $scope.showAlert('',result);
                                     });
                                 })
                                 .error(function () {
@@ -367,12 +380,12 @@ angular.module('starter.controllers', [])
                                                     $rootScope.user = UserService.getCurrentUser();
                                                     $rootScope.user.country = "Italia";
                                                     $translate('LOGIN_SUCCESSFUL').then(function (result) {
-                                                        alert(result);
+                                                        $scope.showAlert('',result);
                                                     });
                                                 })
                                                 .error(function (response) {
                                                     $translate('LOGIN_FAILED').then(function (result) {
-                                                        alert(result);
+                                                        $scope.showAlert('',result);
                                                     });
                                                     console.log("Response login: " * response)
                                                 })
@@ -408,7 +421,7 @@ angular.module('starter.controllers', [])
                                     $rootScope.user = UserService.getCurrentUser();
                                     $rootScope.user.country = "Italia";
                                     $translate('LOGIN_SUCCESSFUL').then(function (result) {
-                                        alert(result);
+                                        $scope.showAlert('',result);
                                     });
                                 })
                                 .error(function () {
@@ -420,12 +433,12 @@ angular.module('starter.controllers', [])
                                                     $rootScope.user = UserService.getCurrentUser();
                                                     $rootScope.user.country = "Italia";
                                                     $translate('LOGIN_SUCCESSFUL').then(function (result) {
-                                                        alert(result);
+                                                        $scope.showAlert('',result);
                                                     });
                                                 })
                                                 .error(function (response) {
                                                     $translate('LOGIN_FAILED').then(function (result) {
-                                                        alert(result);
+                                                        $scope.showAlert('',result);
                                                     });
                                                     console.log("Response login: " + JSON.stringify(response))
                                                 })
@@ -467,7 +480,7 @@ angular.module('starter.controllers', [])
                     //$scope.trad=$translate('LOGIN_SUCCESSFUL');
 
                     $translate('LOGIN_SUCCESSFUL').then(function (result) {
-                        alert(result);
+                        $scope.showAlert('',result);
                     });
 
 
@@ -477,7 +490,7 @@ angular.module('starter.controllers', [])
                 .error(function () {
                     //$rootScope.user=undefined;
                     $translate('LOGIN_FAILED').then(function (result) {
-                        alert(result);
+                        $scope.showAlert('',result);
                     });
                     $rootScope.user = {};
 
@@ -592,13 +605,13 @@ angular.module('starter.controllers', [])
                     console.log(response);
                     $rootScope.user = {};
                     $translate('REGISTRATION_SUCCESSFUL').then(function (result) {
-                        alert(result);
+                        $scope.showAlert('',result);
                     });
                 })
                 .error(function (response) {
                     $rootScope.user = {};
                     $translate('REGISTRATION_FAILED').then(function (result) {
-                        alert(result);
+                        $scope.showAlert('',result);
                     });
                     console.log("Errore" + JSON.stringify($rootScope.user));
 

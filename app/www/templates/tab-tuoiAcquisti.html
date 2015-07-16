@@ -1,17 +1,24 @@
 <ion-view view-title="{{'YOUR_PURCHASES'|translate}}">
     <ion-content>
+        <!--       <div class="list">
+                   <a class="item item-thumbnail-left" href="#">
+                       <img src="cover.jpg">
+
+                       <h2>Pretty Hate Machine</h2>
+
+                       <p>Nine Inch Nails</p>
+                   </a>
+               </div>
+            -->
+        ng-repeat item in lista
+      ng-repeat categ in cat | filter : item.basket.product.oid :  categ.oid
+
         <div class="list">
-            <a class="item item-thumbnail-left" href="#">
-                <img src="cover.jpg">
+            <div class="item" ng-repeat="item in lista ">
 
-                <h2>Pretty Hate Machine</h2>
-
-                <p>Nine Inch Nails</p>
-            </a>
-        </div>
-        <div  ng-repeat="item in lista">
-            {{item}}
-        </div>
+                </div>
+                {{item}}
+            </div>
 
     </ion-content>
 </ion-view>
