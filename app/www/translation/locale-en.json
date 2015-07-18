@@ -35,5 +35,17 @@
   "PURCHASE": "Purchase",
   "LOGIN_REQUIRED":"Login required",
   "LANGUAGE_TEXT":"Seleziona la lingua / Select the language",
-  "NAME":"Name"
+  "NAME":"Name",
+  "SURNAME":"Surname",
+  "PHONE":"Phone number",
+  "OLD_PASSWORD":"Old password",
+  "NEW_PASSWORD":"New password",
+  "ADDRESS":"Address",
+  "HOUSE_NUMBER":"House number",
+  "CITY":"City",
+  "STATE":"State",
+  "COUNTRY":"Country",
+  "STATE_CODE":"State code",
+  "FISCAL_CODE":"Fiscal code"
+
 }

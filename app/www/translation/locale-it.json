@@ -35,7 +35,17 @@
   "LOGIN_REQUIRED":"È necessario effettuare il login",
   "LANGUAGE_TEXT":"Seleziona la lingua / Select the language",
   "NAME":"Nome",
+  "SURNAME":"Cognome",
+  "PHONE":"Numero di telefono",
+  "OLD_PASSWORD":"Vecchia password",
+  "NEW_PASSWORD":"Nuova password",
+  "ADDRESS":"Indirizzo",
+  "HOUSE_NUMBER":"Numero civico",
+  "CITY":"Citta",
+  "STATE":"Regione",
+  "COUNTRY":"Stato",
+  "STATE_CODE":"CAP",
+  "FISCAL_CODE":"Codice Fiscale"
 
-  "SURNAME":"Cognome"
 
 }
