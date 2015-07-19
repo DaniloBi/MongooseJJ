@@ -10,7 +10,11 @@ angular.module('starter.controllers', [])
 
 
     })
-    .controller('ProductCtrl', function ($state, $scope, $stateParams, filterFilter, $rootScope) {
+    .controller('wishlistCtrl', function (StorageService, $scope) {
+        $scope.wishlist = StorageService.getWishList();
+
+    })
+    .controller('ProductCtrl', function ($state, $scope, $stateParams, filterFilter, $rootScope, StorageService, $ionicPopup, $translate) {
         $rootScope.product = {};
         $scope.cat = filterFilter($scope.catalogo, {code: $stateParams.catOid})[0];
         $rootScope.element = filterFilter($scope.cat.Products, {oid: $stateParams.productCode})[0];
@@ -26,11 +30,43 @@ angular.module('starter.controllers', [])
         $scope.redirect = function () {
             $state.go('tab.acquista');
             console.log($rootScope.user.taglia);
+        };
+        $scope.showConfirmWishlist = function (product) {
+            $translate('WISHLIST_ALERT_TITLE').then(function (result) {
+                $scope.wishlistTitle = result;
+
+                $translate('WISHLIST_ALERT_MESSAGE').then(function (result) {
+                    $scope.wishlistMessage = result;
+                    var confirmPopup = $ionicPopup.confirm({
+                        title: $scope.wishlistTitle,
+                        template: $scope.wishlistMessage
+                    });
+                    confirmPopup.then(function (res) {
+                        if (res) {
+                            $scope.addWishlist(product);
+                            console.log('Added to wishlist');
+                        } else {
+                            console.log('Not added');
+                        }
+                    });
+                });
+            });
+
+
+        };
+        $scope.addWishlist = function (product) {
+            //if (!StorageService.getWishList().contains(product))
+            if (StorageService.getWishList().indexOf(product) == -1)
+                StorageService.setWishList(product);
+            //console.log(StorageService.getWishList().Contains(product));
+            console.log(StorageService.getWishList());
+
+
         }
 
 
     })
-    .controller('AcquistaCtrl', function ($scope, $rootScope, ServerServices,$translate) {
+    .controller('AcquistaCtrl', function ($scope, $rootScope, ServerServices, $translate) {
 
         console.log(JSON.stringify($rootScope.user));
         $scope.startPayment = function () {
@@ -54,7 +90,7 @@ angular.module('starter.controllers', [])
 
         }
 
-
+        //PAYPAL
         var app = {
             // Application Constructor
 
@@ -83,12 +119,12 @@ angular.module('starter.controllers', [])
                 ServerServices.orderConfermation($scope.invioDatiPagamento)
                     .success(function (response) {
                         $translate('PAYMENT_OUTCOME_SUCCESSFULL').then(function (result) {
-                            $scope.showAlert('',result);
+                            $scope.showAlert('', result);
                         });
                     })
                     .error(function (response) {
                         $translate('PAYMENTO_OUTCOME_FAILED').then(function (result) {
-                            $scope.showAlert('',result);
+                            $scope.showAlert('', result);
                         });
                     })
             },
@@ -132,7 +168,7 @@ angular.module('starter.controllers', [])
             },
             onUserCanceled: function (result) {
                 $translate('PAYMENTO_OUTCOME_FAILED').then(function (result) {
-                    $scope.showAlert('',result);
+                    $scope.showAlert('', result);
                 });
                 console.log(result);
             }
@@ -147,18 +183,13 @@ angular.module('starter.controllers', [])
         console.log(filterFilter($scope.catalogo, {code: $stateParams.catOid})[0]);
         $scope.categoria = filterFilter($scope.catalogo, {code: $stateParams.catOid})[0];
 
-        //if ($scope.categoria.Products[0] == '[]'){
-
-        console.log($scope.categoria.name);
-        //}
-        //console.log($scope.categoria);
     })
 
     .controller("tuoiAcquistiCtrl", function (ServerServices, $rootScope, $scope, $state) {
 
         if (!$rootScope.connected) {
             $translate('LOGIN_REQUIRED').then(function (result) {
-                $scope.showAlert('',result);
+                $scope.showAlert('', result);
             });
             $state.go('tab.home');
 
@@ -284,9 +315,14 @@ angular.module('starter.controllers', [])
 
      })
      */   //Old Login Ctrl
-    .controller('TabCtrl', function ($scope, $cordovaOauth, StorageService, SocialLogin, $filter, $log,$ionicPopup,
+    .controller('TabCtrl', function ($scope, $cordovaOauth, StorageService, SocialLogin, $filter, $log, $ionicPopup,
                                      $rootScope, $ionicModal, $state, CatalogueService, UserService, $http, ServerServices, CONNECTION, $translate) {
+
+
+        console.log($scope.test);
+
         $scope.connection = CONNECTION;
+
 
         $rootScope.language = {};
         $rootScope.language.code = "EN_en";
@@ -297,13 +333,14 @@ angular.module('starter.controllers', [])
                 console.log($scope.catalogo)
             });
         };
-        $scope.showAlert = function(title,message) {
+
+        $scope.showAlert = function (title, message) {
             var alertPopup = $ionicPopup.alert({
                 title: title,
                 cssClass: "text-center",
                 template: message
             });
-            alertPopup.then(function(res) {
+            alertPopup.then(function (res) {
                 //console.log('Thank you for not eating my delicious ice cream cone    '+res);
             });
         };
@@ -314,7 +351,6 @@ angular.module('starter.controllers', [])
 
          });
          */
-        console.log($rootScope.catalogo);
         $rootScope.connected = false;
 
         $scope.changeLanguage = function () {
@@ -368,7 +404,7 @@ angular.module('starter.controllers', [])
                                     $rootScope.user.country = "Italia";
 
                                     $translate('LOGIN_SUCCESSFUL').then(function (result) {
-                                        $scope.showAlert('',result);
+                                        $scope.showAlert('', result);
                                     });
                                 })
                                 .error(function () {
@@ -380,12 +416,12 @@ angular.module('starter.controllers', [])
                                                     $rootScope.user = UserService.getCurrentUser();
                                                     $rootScope.user.country = "Italia";
                                                     $translate('LOGIN_SUCCESSFUL').then(function (result) {
-                                                        $scope.showAlert('',result);
+                                                        $scope.showAlert('', result);
                                                     });
                                                 })
                                                 .error(function (response) {
                                                     $translate('LOGIN_FAILED').then(function (result) {
-                                                        $scope.showAlert('',result);
+                                                        $scope.showAlert('', result);
                                                     });
                                                     console.log("Response login: " * response)
                                                 })
@@ -421,7 +457,7 @@ angular.module('starter.controllers', [])
                                     $rootScope.user = UserService.getCurrentUser();
                                     $rootScope.user.country = "Italia";
                                     $translate('LOGIN_SUCCESSFUL').then(function (result) {
-                                        $scope.showAlert('',result);
+                                        $scope.showAlert('', result);
                                     });
                                 })
                                 .error(function () {
@@ -433,12 +469,12 @@ angular.module('starter.controllers', [])
                                                     $rootScope.user = UserService.getCurrentUser();
                                                     $rootScope.user.country = "Italia";
                                                     $translate('LOGIN_SUCCESSFUL').then(function (result) {
-                                                        $scope.showAlert('',result);
+                                                        $scope.showAlert('', result);
                                                     });
                                                 })
                                                 .error(function (response) {
                                                     $translate('LOGIN_FAILED').then(function (result) {
-                                                        $scope.showAlert('',result);
+                                                        $scope.showAlert('', result);
                                                     });
                                                     console.log("Response login: " + JSON.stringify(response))
                                                 })
@@ -458,8 +494,8 @@ angular.module('starter.controllers', [])
             $scope.closeModal(1);
         };
         $scope.logout = function () {
-            $rootScope.connected=false;
-            $rootScope.user={};
+            $rootScope.connected = false;
+            $rootScope.user = {};
             $state.go('tab.home');
             //window.location.href = "index.html";
         };
@@ -480,7 +516,7 @@ angular.module('starter.controllers', [])
                     //$scope.trad=$translate('LOGIN_SUCCESSFUL');
 
                     $translate('LOGIN_SUCCESSFUL').then(function (result) {
-                        $scope.showAlert('',result);
+                        $scope.showAlert('', result);
                     });
 
 
@@ -490,7 +526,7 @@ angular.module('starter.controllers', [])
                 .error(function () {
                     //$rootScope.user=undefined;
                     $translate('LOGIN_FAILED').then(function (result) {
-                        $scope.showAlert('',result);
+                        $scope.showAlert('', result);
                     });
                     $rootScope.user = {};
 
@@ -593,7 +629,7 @@ angular.module('starter.controllers', [])
         }
 
     })
-    .controller('RegistrationCtrl', function ($scope, $rootScope, $state, $http, ServerServices,$translate) {
+    .controller('RegistrationCtrl', function ($scope, $rootScope, $state, $http, ServerServices, $translate) {
 
         $scope.doRegistration = function () {
 
@@ -605,13 +641,13 @@ angular.module('starter.controllers', [])
                     console.log(response);
                     $rootScope.user = {};
                     $translate('REGISTRATION_SUCCESSFUL').then(function (result) {
-                        $scope.showAlert('',result);
+                        $scope.showAlert('', result);
                     });
                 })
                 .error(function (response) {
                     $rootScope.user = {};
                     $translate('REGISTRATION_FAILED').then(function (result) {
-                        $scope.showAlert('',result);
+                        $scope.showAlert('', result);
                     });
                     console.log("Errore" + JSON.stringify($rootScope.user));
 

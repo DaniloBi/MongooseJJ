@@ -139,6 +139,16 @@ angular.module('starter', [
                     }
                 }
             })
+            .state('tab.wishlist', {
+                url: '/wishlist',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/tab-wishlist.html',
+                        controller: 'wishlistCtrl'
+
+                    }
+                }
+            })
             .state('tab.registrazione', {
                 url: '/registrazione',
                 views: {

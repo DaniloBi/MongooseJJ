@@ -4,36 +4,38 @@ angular.module('starter.services', ['ngResource', 'LocalForageModule'])
         //url: "  http://5.98.13.100:8080/MountainCMS/"
         //url: "http://192.168.1.101:8181/EcommerceWeb/FrontEnd2"
         url: "http://213.183.145.11:8181/EcommerceWeb/FrontEnd2"
-      //CAMBIARE LA RICHIESTA CATALOGO SOTTO - INSERIRE IL SERVIZIO
+        //CAMBIARE LA RICHIESTA CATALOGO SOTTO - INSERIRE IL SERVIZIO
     })
 
     .factory("ServerServices", function ($http, CONNECTION, UserService, StorageService) {
 
         return {
-            serverLink: CONNECTION.url+ '/EcommerceWeb/FrontEnd2/services/',
+            serverLink: CONNECTION.url + '/EcommerceWeb/FrontEnd2/services/',
 
             loginRequest: function (user) {
-                return $http.post(CONNECTION.url+ '/services/login/login.do', user)
+                return $http.post(CONNECTION.url + '/services/login/login.do', user)
             },
             registrationRequest: function (user) {
-                return $http.post(CONNECTION.url+ '/services/registration/registration.do', user)
+                return $http.post(CONNECTION.url + '/services/registration/registration.do', user)
             },
             EditProfileRequest: function (user) {
-                return $http.post(CONNECTION.url+ '/services/profile/edit.do', user)
+                return $http.post(CONNECTION.url + '/services/profile/edit.do', user)
             },
-            orderCreation : function(user){
-                return $http.post(CONNECTION.url+ '/services/order_creation/create.do',user)
+            orderCreation: function (user) {
+                return $http.post(CONNECTION.url + '/services/order_creation/create.do', user)
             },
-            orderConfermation : function(datiUser){
-                return $http.post(CONNECTION.url+"/services/order_confirm/confirm.do",datiUser)
+            orderConfermation: function (datiUser) {
+                return $http.post(CONNECTION.url + "/services/order_confirm/confirm.do", datiUser)
             },
-            orderList : function(user){
-                return $http.post(CONNECTION.url+"/services/orders/list.do",user)
+            orderList: function (user) {
+                return $http.post(CONNECTION.url + "/services/orders/list.do", user)
             }
         }
     })
 
-    .factory("StorageService", function ($localForage, UserService,$rootScope) {
+    .factory("StorageService", function ($localForage, UserService, $rootScope) {
+
+        var wishList = [];
         return {
             setSocialLogin: function (data) {
                 $localForage.setItem('socialLogin', data);
@@ -51,7 +53,6 @@ angular.module('starter.services', ['ngResource', 'LocalForageModule'])
                 user.surname = data['last_name'];
                 user.email = data.email;
                 $localForage.setItem('currentUser', user);
-
                 $localForage.getItem('currentUser').then(function (data) {
                 });
             },
@@ -83,22 +84,30 @@ angular.module('starter.services', ['ngResource', 'LocalForageModule'])
 
                 UserService.setCurrentUser(user);
                 $localForage.setItem('currentUser', user);
-            }
-        }
-    })
-    .factory("SocialLogin", ['$resource', function ($resource) {
-        return {
-            fbUserData: function (accessToken) {
-                return $resource('https://graph.facebook.com/:endpoint', {endpoint: 'me', access_token: accessToken});
             },
-            gpUserData: function (accessToken) {
-                return $resource('https://www.googleapis.com/plus/v1/people/:endpoint', {
-                    endpoint: 'me',
-                    access_token: accessToken
-                });
+            setWishList: function(data){
+                 wishList.push(data)
+            },
+            getWishList: function(){
+                return wishList
             }
+
+    }
+})
+.
+factory("SocialLogin", ['$resource', function ($resource) {
+    return {
+        fbUserData: function (accessToken) {
+            return $resource('https://graph.facebook.com/:endpoint', {endpoint: 'me', access_token: accessToken});
+        },
+        gpUserData: function (accessToken) {
+            return $resource('https://www.googleapis.com/plus/v1/people/:endpoint', {
+                endpoint: 'me',
+                access_token: accessToken
+            });
         }
-    }])
+    }
+}])
 
     .factory("CatalogueService", function ($resource, filterFilter, $q, CONNECTION) {
         //var catalogue = $resource('json/catalogue.json');
@@ -112,8 +121,8 @@ angular.module('starter.services', ['ngResource', 'LocalForageModule'])
             all: function all() {
                 return catalogue.query().$promise
             },
-            cat_lang: function cat_lang(lang){
-                return $resource(CONNECTION.url+"/services/catalogue/all.do",lang).query().$promise;
+            cat_lang: function cat_lang(lang) {
+                return $resource(CONNECTION.url + "/services/catalogue/all.do", lang).query().$promise;
             },
             filterCat: function filterCat(id) {
                 var deferred = $q.defer();
@@ -143,6 +152,8 @@ angular.module('starter.services', ['ngResource', 'LocalForageModule'])
     .factory("UserService", [function () {
 
         var currentUser = {};
+
+
         return {
 
             setCurrentUser: function (data) {

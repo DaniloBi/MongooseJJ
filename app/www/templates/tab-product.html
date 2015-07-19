@@ -26,7 +26,10 @@
 
                 <div class="item ">
                     <button class="button button-block button-dark item-icon-right" type="submit">
-                       <section translate>Acquista</section><i class="icon fa fa-shopping-cart"></i>
+                       <section translate>BUY_BUTTON</section><i class="icon fa fa-shopping-cart"></i>
+                    </button>
+                    <button class="button button-block button-dark item-icon-right" ng-click="showConfirmWishlist(element)">
+                        <section translate>ADD_TO_WISHLIST</section><i class="icon fa fa-heart"></i></i>
                     </button>
                 </div>
                 <div class="list">
@@ -36,7 +39,6 @@
                         <div class="input-label" translate>
                             LABEL_COLOR
                         </div>
-
                         <select ng-model="user.colore" ng-options="colore.name as colore.name for colore in mapColore"
                                 required></select>
 

@@ -46,6 +46,10 @@
   "STATE":"State",
   "COUNTRY":"Country",
   "STATE_CODE":"State code",
-  "FISCAL_CODE":"Fiscal code"
+  "FISCAL_CODE":"Fiscal code",
+  "ADD_TO_WISHLIST":"Add to wishlist",
+  "WISHLIST_ALERT_MESSAGE":"Are you sure you want to add this product to your wishlist?",
+  "WISHLIST_ALERT_TITLE":"Wishlist"
+
 
 }

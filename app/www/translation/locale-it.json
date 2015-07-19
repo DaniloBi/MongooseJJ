@@ -45,7 +45,10 @@
   "STATE":"Regione",
   "COUNTRY":"Stato",
   "STATE_CODE":"CAP",
-  "FISCAL_CODE":"Codice Fiscale"
+  "FISCAL_CODE":"Codice Fiscale",
+  "ADD_TO_WISHLIST":"Aggiungi alla wishlist",
+  "WISHLIST_ALERT_MESSAGE":"Sei sicuro di voler aggiungere questo oggetto alla tua wishlist?",
+  "WISHLIST_ALERT_TITLE":"Wishlist"
 
 
 }
