@@ -16,12 +16,14 @@
                 <div class="col" ng-repeat="img in element.Pictures">
                     <div class=" list card">
                         <div class="item item-body">
-                            <img ng-src={{connection.url}}/wr-resource/{{img.picture}} style="width:15%">
+                           <a href="" ng-click="openModal(4)"> <img ng-src={{connection.url}}/wr-resource/{{img.picture}} style="width:15%">
+                           </a>
 
                         </div>
                     </div>
                 </div>
             </div>
+
             <form name="redirectForm"  ng-submit="redirectForm.$valid && redirect()" novalidate>
 
                 <div class="item ">
@@ -31,6 +33,7 @@
                     <button class="button button-block button-dark item-icon-right" ng-click="showConfirmWishlist(element)">
                         <section translate>ADD_TO_WISHLIST</section><i class="icon fa fa-heart"></i></i>
                     </button>
+
                 </div>
                 <div class="list">
 

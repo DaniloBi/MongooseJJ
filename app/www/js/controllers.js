@@ -1,18 +1,20 @@
 angular.module('starter.controllers', [])
 
-    .controller('HomeCtrl', function (UserService, $rootScope) {
+    .controller('HomeCtrl', function (UserService, $rootScope,$scope) {
         if (UserService.getCurrentUser().email == undefined)
             console.log("Vuoto");
         else {
             $rootScope.user = UserService.getCurrentUser();
             $scope.doLogin();
         }
-
-
     })
     .controller('wishlistCtrl', function (StorageService, $scope) {
         $scope.wishlist = StorageService.getWishList();
+        console.log($scope.wishlist);
 
+        $scope.removeFromWishList = function (item) {
+            StorageService.removeWishlist(item);
+        }
     })
     .controller('ProductCtrl', function ($state, $scope, $stateParams, filterFilter, $rootScope, StorageService, $ionicPopup, $translate) {
         $rootScope.product = {};
@@ -24,7 +26,6 @@ angular.module('starter.controllers', [])
 // Per il <select>
         $scope.mapTaglia = $rootScope.element.Taglia;
         $scope.mapColore = $rootScope.element.Colore;
-        console.log($scope.map);
 
 
         $scope.redirect = function () {
@@ -56,10 +57,11 @@ angular.module('starter.controllers', [])
         };
         $scope.addWishlist = function (product) {
             //if (!StorageService.getWishList().contains(product))
+
             if (StorageService.getWishList().indexOf(product) == -1)
                 StorageService.setWishList(product);
+            console.log("Wishlist: " + StorageService.getWishList());
             //console.log(StorageService.getWishList().Contains(product));
-            console.log(StorageService.getWishList());
 
 
         }
@@ -184,8 +186,14 @@ angular.module('starter.controllers', [])
         $scope.categoria = filterFilter($scope.catalogo, {code: $stateParams.catOid})[0];
 
     })
-
-    .controller("tuoiAcquistiCtrl", function (ServerServices, $rootScope, $scope, $state) {
+    .controller('FaqCtrl',function(ServerServices,$scope){
+        $scope.faqList={};
+        ServerServices.faqListRequest().then(function(response){
+            $scope.faqList=response;
+            console.log($scope.faqList);
+        })
+    })
+    .controller("tuoiAcquistiCtrl", function (ServerServices, $rootScope, $scope, $state,$translate) {
 
         if (!$rootScope.connected) {
             $translate('LOGIN_REQUIRED').then(function (result) {
@@ -325,7 +333,7 @@ angular.module('starter.controllers', [])
 
 
         $rootScope.language = {};
-        $rootScope.language.code = "EN_en";
+        $rootScope.language.code = "IT_it";
         //$scope.catalogo = catalogue;
         $scope.getCatalogueLang = function (lang) {
             CatalogueService.cat_lang(lang).then(function (result) {
@@ -559,6 +567,13 @@ angular.module('starter.controllers', [])
             $scope.oModal3 = modal;
         });
 
+        $ionicModal.fromTemplateUrl('templates/modalProduct.html', {
+            id: 4,
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal4 = modal;
+        });
         $scope.openModal = function (index) {
             if (index == 1)
                 $scope.oModal1.show();
@@ -566,6 +581,8 @@ angular.module('starter.controllers', [])
                 $scope.oModal2.show();
             else if (index == 3)
                 $scope.oModal3.show();
+            else if (index == 4)
+                $scope.oModal4.show();
         };
         $scope.closeModal = function (index) {
             if (index == 1)
@@ -574,6 +591,8 @@ angular.module('starter.controllers', [])
                 $scope.oModal2.hide();
             else if (index == 3)
                 $scope.oModal3.hide();
+            else if (index == 4)
+                $scope.oModal4.hide();
         };
         $scope.openRegistrazione = function () {
             $scope.closeModal(1);

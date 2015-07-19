@@ -1,5 +1,33 @@
 <ion-view view-title="FAQ">
     <ion-content>
-        PAGINA FAQ
+
+        <div class="card" ng-repeat="item in faqList">
+            <div class="item item-divider" href="#" ng-click="show = !show">
+                {{item.question}}
+            </div>
+            <div class="item item-text-wrap" ng-show="show">
+                <p ng-bind-html="item.answer"></p>
+            </div>
+
+        </div>
+        <!--
+           <div class="panel-group">
+               <div class="panel panel-default">
+
+                   <div class="panel-heading" ng-repeat="item in faqList">
+                       <div class="panel-title">
+                           <a class="accordion-toggle" data-toggle="collapse" href="#" ng-click="show = !show">
+                               {{item.question}}
+                           </a>
+                       </div>
+                       <div class="panel-body" ng-show="show">
+                           <p ng-bind-html="item.answer"></p>
+                       </div>
+
+                   </div>
+
+               </div>
+           </div>
+           -->
     </ion-content>
 </ion-view>

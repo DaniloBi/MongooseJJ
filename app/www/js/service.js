@@ -2,12 +2,12 @@ angular.module('starter.services', ['ngResource', 'LocalForageModule'])
 
     .constant("CONNECTION", {
         //url: "  http://5.98.13.100:8080/MountainCMS/"
-        //url: "http://192.168.1.101:8181/EcommerceWeb/FrontEnd2"
-        url: "http://213.183.145.11:8181/EcommerceWeb/FrontEnd2"
+        url: "http://192.168.1.27:8181/EcommerceWeb/FrontEnd2"
+        //url: "http://213.183.145.11:8181/EcommerceWeb/FrontEnd2"
         //CAMBIARE LA RICHIESTA CATALOGO SOTTO - INSERIRE IL SERVIZIO
     })
 
-    .factory("ServerServices", function ($http, CONNECTION, UserService, StorageService) {
+    .factory("ServerServices", function ($http, $resource, CONNECTION, UserService, StorageService) {
 
         return {
             serverLink: CONNECTION.url + '/EcommerceWeb/FrontEnd2/services/',
@@ -28,7 +28,12 @@ angular.module('starter.services', ['ngResource', 'LocalForageModule'])
                 return $http.post(CONNECTION.url + "/services/order_confirm/confirm.do", datiUser)
             },
             orderList: function (user) {
-                return $http.post(CONNECTION.url + "/services/orders/list.do", user)
+                //return $resource(CONNECTION.url + "/services/orders/list.do", user).query().$promise;
+                return $http.post(CONNECTION.url + "/services/orders/list.do", user);
+            },
+
+            faqListRequest: function () {
+                return $resource(CONNECTION.url + "/services/faq/list.do").query().$promise;
             }
         }
     })
@@ -85,29 +90,44 @@ angular.module('starter.services', ['ngResource', 'LocalForageModule'])
                 UserService.setCurrentUser(user);
                 $localForage.setItem('currentUser', user);
             },
-            setWishList: function(data){
-                 wishList.push(data)
-            },
-            getWishList: function(){
-                return wishList
-            }
+            setWishList: function (data) {
+                wishList.push(data);
+                $localForage.setItem('wishlist', wishList);
 
-    }
-})
-.
-factory("SocialLogin", ['$resource', function ($resource) {
-    return {
-        fbUserData: function (accessToken) {
-            return $resource('https://graph.facebook.com/:endpoint', {endpoint: 'me', access_token: accessToken});
-        },
-        gpUserData: function (accessToken) {
-            return $resource('https://www.googleapis.com/plus/v1/people/:endpoint', {
-                endpoint: 'me',
-                access_token: accessToken
-            });
+            },
+            removeWishlist: function (data) {
+                var index = wishList.indexOf(data);
+                wishList.splice(index, 1);
+                $localForage.setItem('wishlist', wishList);
+                $localForage.getItem('wishlist').then(function (data) {
+                    console.log(data);
+                    return data;
+                });
+
+
+            },
+            getWishList: function () {
+                return wishList;
+                /* $localForage.getItem('wishlist').then(function (data) {
+                 console.log(data);
+                 return data;
+                 });*/
+            }
         }
-    }
-}])
+    })
+    .factory("SocialLogin", ['$resource', function ($resource) {
+        return {
+            fbUserData: function (accessToken) {
+                return $resource('https://graph.facebook.com/:endpoint', {endpoint: 'me', access_token: accessToken});
+            },
+            gpUserData: function (accessToken) {
+                return $resource('https://www.googleapis.com/plus/v1/people/:endpoint', {
+                    endpoint: 'me',
+                    access_token: accessToken
+                });
+            }
+        }
+    }])
 
     .factory("CatalogueService", function ($resource, filterFilter, $q, CONNECTION) {
         //var catalogue = $resource('json/catalogue.json');

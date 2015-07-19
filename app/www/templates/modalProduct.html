@@ -1,0 +1,19 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-dark">
+        <h1 class="title" translate>PRODUCT</h1>
+        <button class="button button-icon button-clear ion-close-round" menu-toggle="right" ng-click="closeModal(4)">
+        </button>
+    </ion-header-bar>
+    <ion-content class="padding">
+
+        {{elem}}
+        <ion-slide-box>
+            <ion-slide ng-repeat="item in element.Pictures">
+                <div class="text-center">
+                    <img class="full-image" ng-src={{connection.url}}/wr-resource/{{item.picture}}>
+                </div>
+            </ion-slide>
+
+        </ion-slide-box>
+    </ion-content>
+</ion-modal-view>

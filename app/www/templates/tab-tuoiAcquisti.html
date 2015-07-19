@@ -10,13 +10,14 @@
                    </a>
                </div>
             -->
-        ng-repeat item in lista
-      ng-repeat categ in cat | filter : item.basket.product.oid :  categ.oid
 
         <div class="list">
-            <div class="item" ng-repeat="item in lista ">
+            <div class="item item-thumbnail-left" ng-repeat="item in lista ">
+                <img ng-src=data:image/png;base64,{{item.basket[0].product.translation[0].picture.picture}}>
 
-                </div>
+                <h2>{{'PRODUCT' | translate}} : {{item.basket[0].product.translation[0].name}}</h2>
+                <p>{{item.date}}</p>
+            </div>
                 {{item}}
             </div>
 

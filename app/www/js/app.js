@@ -76,7 +76,6 @@ angular.module('starter', [
         });
 
     })
-
     .config(['$translateProvider', function ($translateProvider) {
 
         $translateProvider.useStaticFilesLoader({
@@ -86,7 +85,7 @@ angular.module('starter', [
             }]
         });
         $translateProvider.uniformLanguageTag('bcp47')
-            .preferredLanguage('en');
+            .preferredLanguage('it');
     }])
 
     .config(function ($stateProvider, $urlRouterProvider) {
@@ -171,7 +170,8 @@ angular.module('starter', [
                 url: '/faq',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/tab-faq.html'
+                        templateUrl: 'templates/tab-faq.html',
+                        controller:'FaqCtrl'
                     }
                 }
             })
