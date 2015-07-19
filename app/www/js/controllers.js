@@ -212,7 +212,7 @@ angular.module('starter.controllers', [])
                 .error(function (response) {
                     console.log(response);
                 })
-        }
+            }
     })
     /* .controller('LoginCtrlOld', function ($scope, $log, $state, $cordovaOauth, PersistenceService, SocialLogin) {
      PersistenceService.getSocialLogin().then(function (data) {
