@@ -3,7 +3,7 @@ angular.module('starter.services', ['ngResource', 'LocalForageModule'])
     .constant("CONNECTION", {
         //url: "  http://5.98.13.100:8080/MountainCMS/"
         //url: "http://192.168.1.27:8181/EcommerceWeb/FrontEnd2"
-        url: "http://213.183.145.11:8181/EcommerceWeb/FrontEnd2"
+        url: "https://jonnyjoy.com/EcommerceWeb/FrontEnd2"
         //CAMBIARE LA RICHIESTA CATALOGO SOTTO - INSERIRE IL SERVIZIO
     })
 
@@ -100,7 +100,7 @@ angular.module('starter.services', ['ngResource', 'LocalForageModule'])
                 wishList.splice(index, 1);
                 $localForage.setItem('wishlist', wishList);
                 $localForage.getItem('wishlist').then(function (data) {
-                    console.log(data);
+
                     return data;
                 });
 

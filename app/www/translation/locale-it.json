@@ -32,7 +32,7 @@
   "PROFILE":"Profilo",
   "ACCOUNT_CREATION":"Crea account",
   "PURCHASE":"Acquista",
-  "LOGIN_REQUIRED":"È necessario effettuare il login",
+  "LOGIN_REQUIRED":"Ã¨ necessario effettuare il login",
   "LANGUAGE_TEXT":"Seleziona la lingua / Select the language",
   "NAME":"Nome",
   "SURNAME":"Cognome",
@@ -48,7 +48,11 @@
   "FISCAL_CODE":"Codice Fiscale",
   "ADD_TO_WISHLIST":"Aggiungi alla wishlist",
   "WISHLIST_ALERT_MESSAGE":"Sei sicuro di voler aggiungere questo oggetto alla tua wishlist?",
-  "WISHLIST_ALERT_TITLE":"Wishlist"
+  "WISHLIST_ALERT_TITLE":"Wishlist",
+  "CONFIRM_BUTTON": "Conferma",
+  "PSW_DOESNT_MATCH":"Le password non coincidono",
+  "INVALID_EMAIL":"Email non valida",
+  "FIELD_MISSING":"Inserire tutti i campi"
 
 
 }

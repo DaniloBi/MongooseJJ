@@ -49,7 +49,11 @@
   "FISCAL_CODE":"Fiscal code",
   "ADD_TO_WISHLIST":"Add to wishlist",
   "WISHLIST_ALERT_MESSAGE":"Are you sure you want to add this product to your wishlist?",
-  "WISHLIST_ALERT_TITLE":"Wishlist"
+  "WISHLIST_ALERT_TITLE":"Wishlist",
+  "CONFIRM_BUTTON": "Confirm",
+  "PSW_DOESNT_MATCH":"Passwords don't match!",
+  "INVALID_EMAIL":"Invalid email",
+  "FIELD_MISSING":"Some fields are empty"
 
 
 }

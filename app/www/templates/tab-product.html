@@ -1,40 +1,40 @@
 <ion-view view-title="{{'PRODUCT'| translate}}">
-    <ion-content >
+    <ion-content>
 
         <div class="text-center">
-            <div >
+            <div>
                 <h1> {{element.name}} </h1>
             </div>
-            <div >
-                <img ng-src={{connection.url}}/wr-resource/{{element.pictureDefault}} style="width:60%">
+            <div>
+                <img ng-src={{connection.url}}/wr-resource/{{currentImg}} style="width:60%">
 
                 <div style="padding-top: 7%">
                     <h1>{{element.price | currency:"€"}}</h1>
                 </div>
             </div>
             <div class="row" style="padding-top: 30px">
-                <div class="col" ng-repeat="img in element.Pictures">
+                <div class="col" ng-repeat="img in arrayImg track by $index">
                     <div class=" list card">
                         <div class="item item-body">
-                           <a href="" ng-click="openModal(4)"> <img ng-src={{connection.url}}/wr-resource/{{img.picture}} style="width:15%">
-                           </a>
+                            <a href="" ng-click="switch(img)"> <img
+                                    ng-src={{connection.url}}/wr-resource/{{img}} style="width:30%">
+                            </a>
 
                         </div>
                     </div>
                 </div>
             </div>
-
-            <form name="redirectForm"  ng-submit="redirectForm.$valid && redirect()" novalidate>
-
-                <div class="item ">
-                    <button class="button button-block button-dark item-icon-right" type="submit">
-                       <section translate>BUY_BUTTON</section><i class="icon fa fa-shopping-cart"></i>
+            <div class="row">
+                <div class="col col-80 col-offset-10">
+                    <button class="button button-block button-dark item-icon-right"
+                            ng-click="showConfirmWishlist(element)">
+                        <section translate>ADD_TO_WISHLIST</section>
+                        <i class="icon fa fa-heart"></i></i>
                     </button>
-                    <button class="button button-block button-dark item-icon-right" ng-click="showConfirmWishlist(element)">
-                        <section translate>ADD_TO_WISHLIST</section><i class="icon fa fa-heart"></i></i>
-                    </button>
-
                 </div>
+            </div>
+            <form name="redirectForm" ng-submit="redirectForm.$valid && redirect()" novalidate>
+
                 <div class="list">
 
                     <label class="item item-input item-select">
@@ -42,20 +42,27 @@
                         <div class="input-label" translate>
                             LABEL_COLOR
                         </div>
-                        <select ng-model="user.colore" ng-options="colore.name as colore.name for colore in mapColore"
+                        <select ng-model="user.colore" ng-init="user.colore = mapColore[0].name" ng-options="colore.name as colore.name for colore in mapColore"
                                 required></select>
+
 
                     </label>
                     <label class="item item-input item-select">
                         <div class="input-label" translate>
                             LABEL_SIZE
                         </div>
-                        <select ng-model="user.taglia" ng-options="taglia.name as taglia.name for taglia in mapTaglia"
+                        <select ng-model="user.taglia" ng-init="user.taglia = mapTaglia[0].name" ng-options="taglia.name as taglia.name for taglia in mapTaglia"
                                 required></select>
 
                     </label>
-
-
+                </div>
+                <div class="row">
+                    <div class="col col-80 col-offset-10">
+                        <button class="button button-block button-dark item-icon-right" type="submit">
+                            <section translate>BUY_BUTTON</section>
+                            <i class="icon fa fa-shopping-cart"></i>
+                        </button>
+                    </div>
                 </div>
             </form>
 

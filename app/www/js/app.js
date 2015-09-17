@@ -9,7 +9,7 @@ angular.module('starter', [
     'ionic',
     'ngCordova',
     'ionic.service.core',
-    'ionic.service.push',
+
     'starter.controllers',
     'starter.services',
     'pascalprecht.translate'
@@ -32,6 +32,27 @@ angular.module('starter', [
             }
         };
     }])
+    .directive("compareTo", function(){
+        return {
+            require: "ngModel",
+            scope: {
+                otherModelValue: "=compareTo"
+
+            },
+            link: function(scope, element, attributes, ngModel) {
+
+                ngModel.$validators.compareTo = function(modelValue) {
+                    return modelValue == scope.otherModelValue;
+                };
+
+                scope.$watch("otherModelValue", function() {
+
+
+                    ngModel.$validate();
+                });
+            }
+        };
+    })
     .config(['$ionicAppProvider', function ($ionicAppProvider) {
         // Identify app
         $ionicAppProvider.identify({

@@ -1,21 +1,27 @@
 <ion-view view-title="Home">
 
     <ion-content>
-
         <div class="row" ng-repeat="item in catalogo">
             <div class="col" ng-if="item.homepage">
 
                 <div style="background:{{item.color}}"
                      class="text-center home-html padding">
-                    <h3> {{item.name}}</h3>
-
-                    <p ng-bind-html="item.blockHTML"></p>
-                </div>
-
-                <div ng-if="item.useImage">
                     <a href="#/tab/categorie/{{item.code}}">
-                        <img class="full-image" ng-src="{{connection.url}}/wr-resource/{{item.image}}"/></a>
+                        <h3> {{item.name}}</h3>
+
+
+                    <div ng-if="item.useImage">
+
+                        <img class="full-image" ng-src="{{connection.url}}/wr-resource/{{item.image}}"/>
+                    </div>
+
+                    <div ng-if="!item.useImage">
+                        <p ng-bind-html="item.blockHTML"></p>
+
+                    </div>
+                    </a>
                 </div>
+
             </div>
         </div>
     </ion-content>

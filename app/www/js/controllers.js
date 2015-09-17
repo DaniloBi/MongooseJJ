@@ -1,8 +1,8 @@
 angular.module('starter.controllers', [])
 
-    .controller('HomeCtrl', function (UserService, $rootScope,$scope) {
-        if (UserService.getCurrentUser().email == undefined)
-            console.log("Vuoto");
+    .controller('HomeCtrl', function (UserService, $rootScope, $scope) {
+        if (UserService.getCurrentUser().email == undefined) {
+        }
         else {
             $rootScope.user = UserService.getCurrentUser();
             $scope.doLogin();
@@ -12,14 +12,37 @@ angular.module('starter.controllers', [])
         $scope.wishlist = StorageService.getWishList();
         console.log($scope.wishlist);
 
+
         $scope.removeFromWishList = function (item) {
             StorageService.removeWishlist(item);
         }
     })
     .controller('ProductCtrl', function ($state, $scope, $stateParams, filterFilter, $rootScope, StorageService, $ionicPopup, $translate) {
         $rootScope.product = {};
+        $scope.arrayImg=[];
         $scope.cat = filterFilter($scope.catalogo, {code: $stateParams.catOid})[0];
         $rootScope.element = filterFilter($scope.cat.Products, {oid: $stateParams.productCode})[0];
+
+
+       // $scope.arrayImg=$rootScope.element.Pictures;
+        angular.forEach($rootScope.element.Pictures,function(item){
+            $scope.arrayImg.push(item.picture);
+        })
+        $scope.currentImg=$rootScope.element.pictureDefault;
+
+
+
+        $scope.switch=function(item){
+            $scope.arrayImg.push($scope.currentImg);
+            $scope.arrayImg.splice($scope.arrayImg.indexOf(item),1);
+            $scope.currentImg=item;
+
+        }
+
+        $rootScope.element.productCode = $stateParams.productCode;
+        $rootScope.element.catOid = $stateParams.catOid;
+
+        //$scope.element.oid
 
         $rootScope.product['price'] = $rootScope.element.price;
         $rootScope.product['product'] = $rootScope.element.originalOid;
@@ -30,48 +53,49 @@ angular.module('starter.controllers', [])
 
         $scope.redirect = function () {
             $state.go('tab.acquista');
-            console.log($rootScope.user.taglia);
         };
         $scope.showConfirmWishlist = function (product) {
+
             $translate('WISHLIST_ALERT_TITLE').then(function (result) {
                 $scope.wishlistTitle = result;
 
                 $translate('WISHLIST_ALERT_MESSAGE').then(function (result) {
                     $scope.wishlistMessage = result;
-                    var confirmPopup = $ionicPopup.confirm({
+                    $ionicPopup.show({
                         title: $scope.wishlistTitle,
-                        template: $scope.wishlistMessage
+                        template: $scope.wishlistMessage,
+                        buttons: [
+                            {
+                                text: 'No',
+                                onTap: function (e) {
+
+                                }
+                            },
+                            {
+                                text: 'Yes',
+                                type: 'button-positive',
+                                onTap: function (e) {
+                                    addWishlist(product);
+                                }
+                            }
+                        ]
                     });
-                    confirmPopup.then(function (res) {
-                        if (res) {
-                            $scope.addWishlist(product);
-                            console.log('Added to wishlist');
-                        } else {
-                            console.log('Not added');
-                        }
-                    });
+
                 });
             });
-
-
         };
-        $scope.addWishlist = function (product) {
+        function addWishlist(product) {
             //if (!StorageService.getWishList().contains(product))
 
             if (StorageService.getWishList().indexOf(product) == -1)
                 StorageService.setWishList(product);
-            console.log("Wishlist: " + StorageService.getWishList());
-            //console.log(StorageService.getWishList().Contains(product));
-
-
         }
-
-
     })
     .controller('AcquistaCtrl', function ($scope, $rootScope, ServerServices, $translate) {
 
-        console.log(JSON.stringify($rootScope.user));
+
         $scope.startPayment = function () {
+            console.log("Start Payment")
             $rootScope.user.size = $rootScope.product.taglia;
             $rootScope.user.color = $rootScope.product.colore;
             $rootScope.user.product = $rootScope.product.product;
@@ -79,29 +103,17 @@ angular.module('starter.controllers', [])
 
             ServerServices.orderCreation($rootScope.user)
                 .success(function (response) {
-
-                    console.log("Vittoria:" + response);
-                    console.log(response[0].oid);
                     $scope.oidOrder = response[0].oid;
                     app.initPaymentUI();
-
                 })
                 .error(function (response) {
-                    console.log(response);
+
                 })
 
         }
 
         //PAYPAL
         var app = {
-            // Application Constructor
-
-            // deviceready Event Handler
-            //
-            // The scope of 'this' is the event. In order to call the 'receivedEvent'
-            // function, we must explicity call 'app.receivedEvent(...);'
-
-
             initPaymentUI: function () {
                 var clientIDs = {
                     "PayPalEnvironmentProduction": "YOUR_PRODUCTION_CLIENT_ID",
@@ -112,8 +124,7 @@ angular.module('starter.controllers', [])
             },
             onSuccesfulPayment: function (payment) {
                 $scope.invioDatiPagamento = {};
-                console.log("payment success: " + JSON.stringify(payment, null, 4));
-                console.log("ID PAGAMENTO: " + payment.response.id);
+
                 $scope.invioDatiPagamento['email'] = $rootScope.user.email;
                 $scope.invioDatiPagamento['password'] = $rootScope.user.password;
                 $scope.invioDatiPagamento['order'] = $scope.oidOrder;
@@ -172,7 +183,7 @@ angular.module('starter.controllers', [])
                 $translate('PAYMENTO_OUTCOME_FAILED').then(function (result) {
                     $scope.showAlert('', result);
                 });
-                console.log(result);
+
             }
         };
 
@@ -182,37 +193,28 @@ angular.module('starter.controllers', [])
 
     .controller('CatCtrl', function ($scope, $stateParams, filterFilter) {
 
-        console.log(filterFilter($scope.catalogo, {code: $stateParams.catOid})[0]);
+
         $scope.categoria = filterFilter($scope.catalogo, {code: $stateParams.catOid})[0];
 
     })
-    .controller('FaqCtrl',function(ServerServices,$scope){
-        $scope.faqList={};
-        ServerServices.faqListRequest().then(function(response){
-            $scope.faqList=response;
-            console.log($scope.faqList);
+    .controller('FaqCtrl', function (ServerServices, $scope) {
+        $scope.faqList = {};
+        ServerServices.faqListRequest().then(function (response) {
+            $scope.faqList = response;
+
         })
     })
-    .controller("tuoiAcquistiCtrl", function (ServerServices, $rootScope, $scope, $state,$translate) {
+    .controller("tuoiAcquistiCtrl", function (ServerServices, $rootScope, $scope, $state, $translate) {
+        $scope.lista = {};
+        ServerServices.orderList($rootScope.user)
+            .success(function (response) {
 
-        if (!$rootScope.connected) {
-            $translate('LOGIN_REQUIRED').then(function (result) {
-                $scope.showAlert('', result);
-            });
-            $state.go('tab.home');
+                $scope.lista = response;
+            })
+            .error(function (response) {
 
-        }
-        else {
-            $scope.lista = {};
-            ServerServices.orderList($rootScope.user)
-                .success(function (response) {
-                    console.log(response);
-                    $scope.lista = response;
-                })
-                .error(function (response) {
-                    console.log(response);
-                })
-            }
+            })
+
     })
     /* .controller('LoginCtrlOld', function ($scope, $log, $state, $cordovaOauth, PersistenceService, SocialLogin) {
      PersistenceService.getSocialLogin().then(function (data) {
@@ -327,10 +329,8 @@ angular.module('starter.controllers', [])
                                      $rootScope, $ionicModal, $state, CatalogueService, UserService, $http, ServerServices, CONNECTION, $translate) {
 
 
-        console.log($scope.test);
-
         $scope.connection = CONNECTION;
-
+        $rootScope.connected = false;
 
         $rootScope.language = {};
         $rootScope.language.code = "IT_it";
@@ -338,10 +338,19 @@ angular.module('starter.controllers', [])
         $scope.getCatalogueLang = function (lang) {
             CatalogueService.cat_lang(lang).then(function (result) {
                 $scope.catalogo = result;
-                console.log($scope.catalogo)
+
             });
         };
+        $scope.checkLoginAcquista = function () {
+            if (!$rootScope.connected) {
+                $translate('LOGIN_REQUIRED').then(function (result) {
+                    $scope.showAlert('', result);
+                });
 
+            }
+            else
+                $state.go('tab.tuoiAcquisti');
+        }
         $scope.showAlert = function (title, message) {
             var alertPopup = $ionicPopup.alert({
                 title: title,
@@ -349,7 +358,6 @@ angular.module('starter.controllers', [])
                 template: message
             });
             alertPopup.then(function (res) {
-                //console.log('Thank you for not eating my delicious ice cream cone    '+res);
             });
         };
 
@@ -359,10 +367,10 @@ angular.module('starter.controllers', [])
 
          });
          */
-        $rootScope.connected = false;
+
 
         $scope.changeLanguage = function () {
-            console.log($rootScope.language);
+
             if ($rootScope.language.code == "IT_it") {
                 $translate.use("it");
                 $scope.getCatalogueLang($rootScope.language);
@@ -404,13 +412,13 @@ angular.module('starter.controllers', [])
                             $rootScope.user.email = data.email;
                             $rootScope.user.password = "1515" + data.id;
 
-                            console.log(JSON.stringify($rootScope.user));
-                            ServerServices.loginRequest($rootScope)
+
+                            ServerServices.loginRequest($rootScope.user)
                                 .success(function (response) {
                                     StorageService.setUserFromLogin(response[0]);
                                     $rootScope.user = UserService.getCurrentUser();
                                     $rootScope.user.country = "Italia";
-
+                                    $rootScope.connected=true;
                                     $translate('LOGIN_SUCCESSFUL').then(function (result) {
                                         $scope.showAlert('', result);
                                     });
@@ -418,11 +426,12 @@ angular.module('starter.controllers', [])
                                 .error(function () {
                                     ServerServices.registrationRequest($rootScope.user)
                                         .success(function (response) {
-                                            ServerServices.loginRequest($rootScope)
+                                            ServerServices.loginRequest($rootScope.user)
                                                 .success(function (response) {
                                                     StorageService.setUserFromLogin(response[0]);
                                                     $rootScope.user = UserService.getCurrentUser();
                                                     $rootScope.user.country = "Italia";
+                                                    $rootScope.connected=true;
                                                     $translate('LOGIN_SUCCESSFUL').then(function (result) {
                                                         $scope.showAlert('', result);
                                                     });
@@ -431,11 +440,11 @@ angular.module('starter.controllers', [])
                                                     $translate('LOGIN_FAILED').then(function (result) {
                                                         $scope.showAlert('', result);
                                                     });
-                                                    console.log("Response login: " * response)
+
                                                 })
                                         })
                                         .error(function (response) {
-                                            console.log("response registrazione:  " + response)
+
                                         })
                                 })
                         }
@@ -455,7 +464,7 @@ angular.module('starter.controllers', [])
                     $log.debug("Google OAUTH call: ", result);
                     SocialLogin.gpUserData(result.access_token).get(
                         function (data) {
-                            console.log(data);
+
                             $rootScope.user.email = data.emails[0].value;
                             $rootScope.user.password = "5151" + data.id;
 
@@ -464,6 +473,7 @@ angular.module('starter.controllers', [])
                                     StorageService.setUserFromLogin(response[0]);
                                     $rootScope.user = UserService.getCurrentUser();
                                     $rootScope.user.country = "Italia";
+                                    $rootScope.connected=true;
                                     $translate('LOGIN_SUCCESSFUL').then(function (result) {
                                         $scope.showAlert('', result);
                                     });
@@ -476,6 +486,7 @@ angular.module('starter.controllers', [])
                                                     StorageService.setUserFromLogin(response[0]);
                                                     $rootScope.user = UserService.getCurrentUser();
                                                     $rootScope.user.country = "Italia";
+                                                    $rootScope.connected=true;
                                                     $translate('LOGIN_SUCCESSFUL').then(function (result) {
                                                         $scope.showAlert('', result);
                                                     });
@@ -484,17 +495,17 @@ angular.module('starter.controllers', [])
                                                     $translate('LOGIN_FAILED').then(function (result) {
                                                         $scope.showAlert('', result);
                                                     });
-                                                    console.log("Response login: " + JSON.stringify(response))
+
                                                 })
                                         })
                                         .error(function (response) {
-                                            console.log("response registrazione:  " + JSON.stringify(response))
+
                                         })
                                 })
 
                         })
                 }, function (error) {
-                    $log.debug("Google OAUT Error: ", error);
+
                 });
             }
 
@@ -514,31 +525,27 @@ angular.module('starter.controllers', [])
             ServerServices.loginRequest($rootScope.user)
                 .success(function (response) {
                     $rootScope.connected = true;
-                    console.log("login effettuato: " + $rootScope.user);
+
 
                     StorageService.setUserFromLogin(response[0]);
 
                     $rootScope.user = UserService.getCurrentUser();
                     $rootScope.user.country = "Italia";
-                    console.log("Current user: " + JSON.stringify(UserService.getCurrentUser().name));
-                    //$scope.trad=$translate('LOGIN_SUCCESSFUL');
+
 
                     $translate('LOGIN_SUCCESSFUL').then(function (result) {
                         $scope.showAlert('', result);
                     });
 
 
-                    console.log("Nome: " + $rootScope.user.name);
-
                 })
                 .error(function () {
-                    //$rootScope.user=undefined;
+
                     $translate('LOGIN_FAILED').then(function (result) {
                         $scope.showAlert('', result);
                     });
                     $rootScope.user = {};
 
-                    //console.log("Errore" + JSON.stringify($rootScope.user));
 
                 });
 
@@ -618,8 +625,6 @@ angular.module('starter.controllers', [])
 
         }
 
-        console.log("CurrentUser " + UserService.getCurrentUser());
-
 
         $scope.userTemp['email'] = UserService.getCurrentUser().email;
         $scope.userTemp['old_password'] = $rootScope.user.password;
@@ -631,19 +636,17 @@ angular.module('starter.controllers', [])
         $scope.userTemp['address'] = UserService.getCurrentUser().address;
         $scope.userTemp['telephone'] = UserService.getCurrentUser().telephone;
         $scope.userTemp['surname'] = UserService.getCurrentUser().surname;
-        console.log($rootScope.user.password);
 
-        console.log("UserTemp: " + JSON.stringify($scope.userTemp));
 
         $scope.editProfile = function () {
             ServerServices.EditProfileRequest($scope.userTemp)
                 .success(function (response) {
-                    console.log("RESPONSE: " + JSON.stringify(response[0]));
+
                     UserService.setCurrentUser(response[0]);
                     $rootScope.user = UserService.getCurrentUser();
                 })
                 .error(function (response) {
-                    console.log("Defeat: " + response);
+
                 })
         }
 
@@ -657,7 +660,7 @@ angular.module('starter.controllers', [])
 
             ServerServices.registrationRequest($rootScope.user)
                 .success(function (response) {
-                    console.log(response);
+
                     $rootScope.user = {};
                     $translate('REGISTRATION_SUCCESSFUL').then(function (result) {
                         $scope.showAlert('', result);
@@ -668,9 +671,7 @@ angular.module('starter.controllers', [])
                     $translate('REGISTRATION_FAILED').then(function (result) {
                         $scope.showAlert('', result);
                     });
-                    console.log("Errore" + JSON.stringify($rootScope.user));
 
-                    console.log(response)
                 });
 
             $state.go('tab.home')
