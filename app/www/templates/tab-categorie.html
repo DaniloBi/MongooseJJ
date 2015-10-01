@@ -1,48 +1,76 @@
 <ion-view view-title="{{categoria.name}}">
-    <ion-content>
+    <ion-content class="text-center">
         <div ng-if="categoria.Products[0]==undefined" style="padding-top: 10%">
-
             <img class=" center-block" ng-src="./demo/presto-online.jpg" style="width:50%">
         </div>
+        <div class="row" ng-if="$index % 2 === 0" ng-repeat="item in categoria.Products" style="padding:2% 2% 2% 2%">
 
-                    <div class="col " ng-repeat="item in categoria.Products" style="padding:2% 2% 2% 2%">
+            <div class="col col-50" ng-if="$index<categoria.Products.length">
+                <h4> {{categoria.Products[$index].name}}</h4>
+                <p></p>
+                <a href="#/tab/product/{{categoria.code}}/{{categoria.Products[$index].oid}}">
+                    <img class="img-responsive center-block"
+                         ng-src="{{connection.url}}/wr-resource/{{categoria.Products[$index].pictureDefault}}" style="width:45%">
+                </a>
+                <p></p>
+                <h4>{{categoria.Products[$index].price | currency:"€"}}</h4>
+            </div>
 
+            <div class="col col-50" ng-if="$index +1 <categoria.Products.length">
+                <h4> {{item.name}}</h4>
+                <p></p>
+                <a href="#/tab/product/{{categoria.code}}/{{categoria.Products[$index+1].oid}}">
+                    <img class="img-responsive center-block"
+                         ng-src="{{connection.url}}/wr-resource/{{categoria.Products[$index+1].pictureDefault}}" style="width:45%">
+                </a>
+                <p></p>
+                <h4>{{categoria.Products[$index+1].price | currency:"€"}}</h4>
+            </div>
+            <hr align="left" width="200" size="30" color="black">
+        </div>
+
+        <!--  <div class="col" ng-if="$index % 2 === 0" ng-repeat="item in categoria.Products" style="padding:2% 2% 2% 2%">
+
+              <div class=" list">
+                  <div class="text-center item item-body">
+                      <h2> {{item.name}}</h2>
+                      <p></p>
+                      <a href="#/tab/product/{{categoria.code}}/{{item.oid}}">
+
+                          <img class="img-responsive center-block"
+                               ng-src="{{connection.url}}/wr-resource/{{item.pictureDefault}}" style="width:45%">
+                      </a>
+
+                      <p></p>
+
+                      <h2>{{item.price | currency:"€"}}</h2>
+
+                  </div>
+              </div>
+          </div>
+  -->
+        <!--
+
+
+                <div ng-if="categoria.Products[0]!=undefined" class="row " style="flex-wrap:wrap">
+
+                    <div class="col col-50 " ng-repeat="item in categoria.Products">
                         <div class=" list">
-                            <div class="text-center item item-body" >
+                            <div class="text-center item item-body">
 
-                               <h2> {{item.name}}</h2> <p></p>
+                                {{item.name}}
                                 <a href="#/tab/product/{{categoria.code}}/{{item.oid}}">
 
-                                    <img class="img-responsive center-block" ng-src="{{connection.url}}/wr-resource/{{item.pictureDefault}}" style="width:45%" >
-                                </a><p></p>
-                                <h2>{{item.price | currency:"€"}}</h2>
+                                    <img class="img-responsive center-block"
+                                         ng-src="{{connection.url}}/wr-resource/{{item.pictureDefault}}" style="width:50%">
+                                </a>
+
+                                <p>{{item.price | currency:"€"}}</p>
 
                             </div>
                         </div>
-        </div>
-
-<!--
-
-
-        <div ng-if="categoria.Products[0]!=undefined" class="row " style="flex-wrap:wrap">
-
-            <div class="col col-50 " ng-repeat="item in categoria.Products">
-                <div class=" list">
-                    <div class="text-center item item-body">
-
-                        {{item.name}}
-                        <a href="#/tab/product/{{categoria.code}}/{{item.oid}}">
-
-                            <img class="img-responsive center-block"
-                                 ng-src="{{connection.url}}/wr-resource/{{item.pictureDefault}}" style="width:50%">
-                        </a>
-
-                        <p>{{item.price | currency:"€"}}</p>
-
                     </div>
                 </div>
-            </div>
-        </div>
--->
+        -->
     </ion-content>
 </ion-view>

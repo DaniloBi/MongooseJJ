@@ -1,13 +1,12 @@
 angular.module('starter.services', ['ngResource', 'LocalForageModule'])
 
     .constant("CONNECTION", {
-        //url: "  http://5.98.13.100:8080/MountainCMS/"
         //url: "http://192.168.1.27:8181/EcommerceWeb/FrontEnd2"
         url: "https://jonnyjoy.com/EcommerceWeb/FrontEnd2"
         //CAMBIARE LA RICHIESTA CATALOGO SOTTO - INSERIRE IL SERVIZIO
     })
 
-    .factory("ServerServices", function ($http, $resource, CONNECTION, UserService, StorageService) {
+    .factory("ServerServices", function ($http, $resource, CONNECTION) {
 
         return {
             serverLink: CONNECTION.url + '/EcommerceWeb/FrontEnd2/services/',

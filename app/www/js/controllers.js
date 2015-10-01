@@ -116,7 +116,7 @@ angular.module('starter.controllers', [])
         var app = {
             initPaymentUI: function () {
                 var clientIDs = {
-                    "PayPalEnvironmentProduction": "YOUR_PRODUCTION_CLIENT_ID",
+                    "PayPalEnvironmentProduction": "AcOcecgYcHdEm-eybIImTvSRPlGX4Y0qxGcVwcUbiJtDD8LnDJC1_epfJpJX29rLI9ma_rScUhN4U4Gf",
                     "PayPalEnvironmentSandbox": "AbXCfbqg397E8sn53Rxq6gPuoq1ti7PuO_doxuSlp2Kk6bugS-MfwZmME5lqOwUU7iAScfJg7OJU9w6W"
                 };
                 PayPalMobile.init(clientIDs, app.onPayPalMobileInit);
@@ -375,11 +375,13 @@ angular.module('starter.controllers', [])
                 $translate.use("it");
                 $scope.getCatalogueLang($rootScope.language);
                 $scope.closeModal(3);
+                $state.go('tab.home');
             }
             else if ($rootScope.language.code == "EN_en") {
                 $translate.use("en");
                 $scope.getCatalogueLang($rootScope.language);
                 $scope.closeModal(3);
+                $state.go('tab.home');
             }
         };
         $rootScope.user =
